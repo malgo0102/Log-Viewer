@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class JsonParserController {
 
-  @Autowired
-  private JsonParser jsonParser;
-
   @GetMapping("/")
   public String showIndex(){
     return "index";
   }
 
-  @PostMapping("/log")
+  @PostMapping("/table")
+  public String showTable(){
+    return "table";
+  }
 }
