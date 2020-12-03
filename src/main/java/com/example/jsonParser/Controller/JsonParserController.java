@@ -1,6 +1,9 @@
-package com.example.jsonParser;
+package com.example.jsonParser.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.jsonParser.Model.TableData;
+
+import com.example.jsonParser.Parser.Parser;
+import org.springframework.boot.json.JsonParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,15 +29,13 @@ public class JsonParserController {
 
   @PostMapping("/table")
   public String showTable(Model m){
-    JsonParser jsonParser = new JsonParser();
-    LogData logData = new LogData();
+    Parser parser = new Parser();
+    TableData tableData = new TableData();
     File file = new File("iris.json");
-    logData = jsonParser.parse(file);
-    ArrayList<HashMap<String, String>> rows = new ArrayList<>();
-    List<String> headers = new ArrayList<>();
-    for (String key : rows.get[0].keySet()) {
-      System.out.println( key );
-    }
+    tableData = parser.parse(file);
+    List<List<String>> rows = tableData.getRows();
+    List<String> headers = tableData.getHeaders();
+
 
     headers.add("#");
     headers.add("Timestamp");
