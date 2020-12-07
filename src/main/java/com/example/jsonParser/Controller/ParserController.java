@@ -6,17 +6,24 @@ import com.example.jsonParser.Parser.JsonParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.File;
 import java.util.List;
 
 @Controller
-public class JsonParserController {
+public class ParserController {
 
   @GetMapping("/")
   public String showIndex(){
     return "index";
+  }
+
+  @GetMapping("/import")
+  public String importSettings(Model m) {
+    List<String> fileSettings = List.of("Novo Nordisk logs", "Rovsing logs", "Lenovo logs");
+    m.addAttribute("file_settings", fileSettings);
+
+    return "import";
   }
 
   @GetMapping("/table")
