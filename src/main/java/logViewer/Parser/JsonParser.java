@@ -1,9 +1,9 @@
-package com.example.jsonParser.Parser;
+package logViewer.Parser;
 
 import java.io.FileReader;
 import java.util.*;
 
-import com.example.jsonParser.Model.TableData;
+import logViewer.Model.TableData;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

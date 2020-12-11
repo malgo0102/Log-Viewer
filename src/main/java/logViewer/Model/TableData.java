@@ -1,4 +1,4 @@
-package com.example.jsonParser.Model;
+package logViewer.Model;
 
 import java.util.ArrayList;
 import java.util.List;

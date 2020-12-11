@@ -1,4 +1,4 @@
-package com.example.jsonParser.Model;
+package logViewer.Model;
 
 public class FileFormat {
   // File extension

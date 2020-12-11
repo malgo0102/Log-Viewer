@@ -1,10 +1,10 @@
-package com.example.jsonParser;
+package logViewer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JsonParserApplicationTests {
+class LogViewerApplicationTests {
 
 	@Test
 	void contextLoads() {

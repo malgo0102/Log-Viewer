@@ -1,13 +1,13 @@
-package com.example.jsonParser;
+package logViewer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class JsonParserApplication {
+public class LogViewerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JsonParserApplication.class, args);
+		SpringApplication.run(LogViewerApplication.class, args);
 	}
 }

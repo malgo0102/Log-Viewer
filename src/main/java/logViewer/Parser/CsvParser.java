@@ -1,6 +1,7 @@
-package com.example.jsonParser.Parser;
+package logViewer.Parser;
 
-import com.example.jsonParser.Model.TableData;
+import logViewer.Model.TableData;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

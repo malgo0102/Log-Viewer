@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>jsonParser</artifactId>
+	<artifactId>LogViewer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>jsonParser</name>
-	<description>Parse JSON in Spring Boot</description>
+	<name>LogViewer</name>
+	<description>Parse log files in Spring Boot app</description>
 
 	<properties>
 		<java.version>11</java.version>

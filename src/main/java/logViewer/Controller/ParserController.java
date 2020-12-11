@@ -1,8 +1,7 @@
-package com.example.jsonParser.Controller;
+package logViewer.Controller;
 
-import com.example.jsonParser.Model.TableData;
-import com.example.jsonParser.Parser.CsvParser;
-import com.example.jsonParser.Parser.JsonParser;
+import logViewer.Model.TableData;
+import logViewer.Parser.CsvParser;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
