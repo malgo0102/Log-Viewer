@@ -31,7 +31,7 @@ public class ParserController {
   }
 
   @PostMapping("/table")
-  public String uploadCSVFile(@RequestParam("file") MultipartFile multipartFile, Model model) {
+  public String uploadFile(@RequestParam("file") MultipartFile multipartFile, Model model) {
     // todo: choose manually file type
     if (multipartFile.isEmpty()) {
       model.addAttribute("error", true);
@@ -52,17 +52,16 @@ public class ParserController {
 //        List<List<String>> rows = tableData.getRows();
 //        List<String> headers = tableData.getHeaders();
 
-
         model.addAttribute("error", false);
         model.addAttribute("headers", headers);
         model.addAttribute("rows", rows);
-
 
       } catch (Exception ex) {
         model.addAttribute("error", true);
         model.addAttribute("message", "Error occurred: " + ex.getMessage());
       }
     }
+
     return "table";
   }
 
