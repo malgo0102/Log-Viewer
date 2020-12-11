@@ -1,6 +1,5 @@
 package com.example.jsonParser.Parser;
 
-import java.io.File;
 import java.io.FileReader;
 import java.util.*;
 
@@ -10,9 +9,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 
-public class JsonParser implements Parser {
+public class JsonParser extends Parser {
 
-  public TableData parse(File file){
+  public TableData parse(String file){
     TableData tableData = new TableData();
     List<List<String>> rows = new ArrayList<>();
     Set<String> keys = new HashSet<>();

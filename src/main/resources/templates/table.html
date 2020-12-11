@@ -12,22 +12,26 @@
     <div th:replace="fragments :: navbar"></div>
     <main class="flex-fill">
         <div class="container">
-            <div class="jumbotron">
-                <h1 class="display-4">Table</h1>
-                <hr>
-                <table class="table table-sm table-bordered">
-                    <thead>
-                    <tr>
-                        <th  th:each="header:${headers}" id = "headers" th:text="${header}"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="row:${rows}" id = "rows">
-                            <td th:each="cell:${row}" th:text="${cell}"></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <h1 class="display-4">Table</h1>
+            <hr>
+            <!-- Display error if any -->
+            <div class="alert alert-danger" role="alert" th:if="${error}">
+                <strong>Error:</strong>
+                <span th:text="${message}"></span>
             </div>
+            <!-- Display list of events -->
+            <table class="table table-sm table-bordered">
+                <thead>
+                <tr>
+                    <th  th:each="header:${headers}" id = "headers" th:text="${header}"></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="row:${rows}" id = "rows">
+                        <td th:each="cell:${row}" th:text="${cell}"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </main>
 

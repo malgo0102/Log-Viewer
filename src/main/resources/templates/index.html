@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>JSON parser</title>
+    <title>Log Viewer</title>
     <link th:replace="fragments :: bootstrap_head">
 </head>
 <body>
@@ -13,9 +13,16 @@
     <main class="flex-fill">
         <div class="container">
             <div class="jumbotron">
-                <h1 class="display-4">Log viewer</h1>
+                <h1 class="display-4">Welcome to Log Viewer</h1>
                 <hr>
-                <h2>Hello World!</h2>
+                <!-- Select file  -->
+                <form method="POST" th:action="@{/table}" enctype="multipart/form-data">
+                    <div class="form-group mt-3">
+                        <label for="file">Select a file:</label>
+                        <input type="file" name="file" class="form-control-file" id="file" accept=".csv">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Import File</button>
+                </form>
             </div>
         </div>
     </main>

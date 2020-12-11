@@ -11,7 +11,7 @@
     <nav th:fragment="navbar"
          class="navbar navbar-expand-lg navbar-light bg-light sticky-top"
          style="margin-bottom: 1rem;">
-        <a class="navbar-brand" href="/">Log viewer</a>
+        <a class="navbar-brand" href="/">Log Viewer</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -27,6 +27,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/import">Import - tab for testing</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
             </ul>
         </div>
         <form class="form-inline my-2 my-lg-0">
@@ -37,7 +43,7 @@
 
     <footer class="container-fluid w-100 py-3" th:fragment="footer">
         <div class="container text-center">
-            <span class="text-muted">Log parser © 2020</span>
+            <span class="text-muted">Log Viewer © 2020</span>
         </div>
     </footer>
 
@@ -45,6 +51,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script type="text/javascript" th:src="@{/static/script.js}"></script>
     </div>
 </body>
 </html>
