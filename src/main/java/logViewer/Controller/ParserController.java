@@ -1,5 +1,6 @@
 package logViewer.Controller;
 
+import logViewer.Model.FileFormat;
 import logViewer.Model.TableData;
 import logViewer.Parser.CsvParser;
 import logViewer.Parser.Parser;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -19,8 +21,8 @@ public class ParserController {
   // TESTING
   @GetMapping("/file_format")
   public String importSettings(Model m) {
-    List<String> fileSettings = List.of("Novo Nordisk logs", "Rovsing logs", "Lenovo logs");
-    m.addAttribute("file_settings", fileSettings);
+    FileFormat fileFormat = new FileFormat();
+    m.addAttribute("file_settings", fileFormat.getName());
 
     return "file_format";
   }

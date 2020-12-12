@@ -1,9 +1,23 @@
 package logViewer.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FileFormat {
+
+  private String name;
   // File extension
   private String fileType;
   private String regex;
+  private List<String> headers = new ArrayList<>();
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
 
   public String getFileType() {
     return fileType;
@@ -19,5 +33,13 @@ public class FileFormat {
 
   public void setRegex(String regex) {
     this.regex = regex;
+  }
+
+  public List<String> getHeaders() {
+    return headers;
+  }
+
+  public void setHeaders(List<String> headers) {
+    this.headers = headers;
   }
 }
