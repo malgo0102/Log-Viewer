@@ -16,11 +16,6 @@ import java.util.List;
 @Controller
 public class ParserController {
 
-  @GetMapping("/")
-  public String showIndex(){
-    return "index";
-  }
-
   // TESTING
   @GetMapping("/file_format")
   public String importSettings(Model m) {
