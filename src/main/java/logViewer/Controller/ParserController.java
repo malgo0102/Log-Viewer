@@ -27,9 +27,18 @@ public class ParserController {
     return "file_format";
   }
 
+  // TESTING
+  @GetMapping("/file_format/add")
+  public String addSetting (Model m) {
+    FileFormat fileFormat = new FileFormat();
+    m.addAttribute("file_settings", fileFormat.getName());
+
+    return "file_format_add";
+  }
+
   @PostMapping("/table")
   public String uploadFile(@RequestParam("file") MultipartFile multipartFile, Model model) {
-    // todo: choose manually file type
+
     if (multipartFile.isEmpty()) {
       model.addAttribute("error", true);
       model.addAttribute("message", "Please select a CSV file to upload.");
@@ -45,6 +54,7 @@ public class ParserController {
         List<List<String>> rows = tableData.getRows();
         List<String> headers = tableData.getHeaders();
 
+        model.addAttribute("showSearch", true);
         model.addAttribute("error", false);
         model.addAttribute("headers", headers);
         model.addAttribute("rows", rows);

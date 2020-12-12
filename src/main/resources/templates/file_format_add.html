@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log Viewer - Add File Format</title>
+    <link th:replace="fragments :: bootstrap_head">
+</head>
+<body>
+<div class="d-flex flex-column sticky-footer-wrapper">
+    <div th:replace="fragments :: navbar"></div>
+    <main class="flex-fill">
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="display-4">Parser - add new file format setting</h1>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <form>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">Enter setting name:</label>
+                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="MySetting">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Choose file type:</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>CSV</option>
+                                        <option>JSON</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">Enter delimiter:</label>
+                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="[ ,^-]+">
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">Enter column headers:</label>
+                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Timestamp,Temperature,Status">
+                                </div>
+                            </form>
+                            <a href="/file_format" class="btn btn-success" role="button">Save</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:replace="fragments :: footer"></div>
+</div>
+<div th:replace="fragments :: bootstrap_body"></div>
+</body>
+</html>
