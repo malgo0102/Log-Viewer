@@ -2,7 +2,6 @@ package logViewer.Controller;
 
 import logViewer.Model.TableData;
 import logViewer.Parser.CsvParser;
-import logViewer.Parser.JsonParser;
 import logViewer.Parser.Parser;
 
 import org.springframework.stereotype.Controller;
@@ -23,12 +22,12 @@ public class ParserController {
   }
 
   // TESTING
-  @GetMapping("/import")
+  @GetMapping("/file_format")
   public String importSettings(Model m) {
     List<String> fileSettings = List.of("Novo Nordisk logs", "Rovsing logs", "Lenovo logs");
     m.addAttribute("file_settings", fileSettings);
 
-    return "import";
+    return "file_format";
   }
 
   @PostMapping("/table")
