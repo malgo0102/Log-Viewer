@@ -3,6 +3,8 @@ package logViewer.Controller;
 import logViewer.Model.TableData;
 import logViewer.Parser.CsvParser;
 
+import logViewer.Parser.JsonParser;
+import logViewer.Parser.Parser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,18 +40,14 @@ public class ParserController {
     } else {
       try {
         //if (csv file):
-        CsvParser csvParser = new CsvParser();
-        String file = csvParser.readFile(multipartFile);
-        TableData tableData = csvParser.parse(file);
+        Parser parser = new CsvParser();
+        // if (json file):
+        //Parser parser = new JsonParser();
+
+        String file = parser.readFile(multipartFile);
+        TableData tableData = parser.parse(file);
         List<List<String>> rows = tableData.getRows();
         List<String> headers = tableData.getHeaders();
-
-        // if (csv file):
-//        JsonParser jsonParser = new JsonParser();
-//        String file = jsonParser.readFile(multipartFile);
-//        TableData tableData = jsonParser.parse(file);
-//        List<List<String>> rows = tableData.getRows();
-//        List<String> headers = tableData.getHeaders();
 
         model.addAttribute("error", false);
         model.addAttribute("headers", headers);

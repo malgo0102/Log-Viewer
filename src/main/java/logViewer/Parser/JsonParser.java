@@ -11,6 +11,7 @@ import org.json.simple.parser.JSONParser;
 
 public class JsonParser extends Parser {
 
+  @Override
   public TableData parse(String file){
     TableData tableData = new TableData();
     List<List<String>> rows = new ArrayList<>();
