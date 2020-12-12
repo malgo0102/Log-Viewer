@@ -18,24 +18,6 @@ import java.util.List;
 @Controller
 public class ParserController {
 
-  // TESTING
-  @GetMapping("/file_format")
-  public String importSettings(Model m) {
-    FileFormat fileFormat = new FileFormat();
-    m.addAttribute("file_settings", fileFormat.getName());
-
-    return "file_format";
-  }
-
-  // TESTING
-  @GetMapping("/file_format/add")
-  public String addSetting (Model m) {
-    FileFormat fileFormat = new FileFormat();
-    m.addAttribute("file_settings", fileFormat.getName());
-
-    return "file_format_add";
-  }
-
   @PostMapping("/table")
   public String uploadFile(@RequestParam("file") MultipartFile multipartFile, Model model) {
 
