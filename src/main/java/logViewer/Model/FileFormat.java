@@ -7,12 +7,12 @@ import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+// @Entity
 public class FileFormat {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+//  @Id
+//  @GeneratedValue(strategy = GenerationType.IDENTITY)
+//  private Integer id;
 
   private String name;
   // File extension
@@ -20,13 +20,13 @@ public class FileFormat {
   private String regex;
   private List<String> headers = new ArrayList<>();
 
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
+//  public Integer getId() {
+//    return id;
+//  }
+//
+//  public void setId(Integer id) {
+//    this.id = id;
+//  }
 
   public String getName() {
     return name;

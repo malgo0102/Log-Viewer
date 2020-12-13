@@ -1,6 +1,5 @@
 package logViewer.Controller;
 
-import logViewer.Model.FileFormat;
 import logViewer.Model.TableData;
 import logViewer.Parser.CsvParser;
 import logViewer.Parser.Parser;
