@@ -2,12 +2,15 @@ package logViewer.Controller;
 
 import logViewer.Model.FileFormat;
 
+import logViewer.Repository.FileFormatRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class FileFormatController {
+
+  FileFormatRepository fileFormatRepo;
 
   // TESTING
   @GetMapping("/file_format")

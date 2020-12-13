@@ -1,4 +1,8 @@
 package logViewer.Repository;
 
-public class FileFormatRepository {
+
+import logViewer.Model.FileFormat;
+import org.springframework.data.repository.CrudRepository;
+
+public interface FileFormatRepository extends CrudRepository<FileFormat, Integer> {
 }
