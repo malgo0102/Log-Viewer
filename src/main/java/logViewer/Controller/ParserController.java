@@ -17,6 +17,10 @@ import java.util.List;
 public class ParserController {
 
   TableData tableData;
+
+  @GetMapping("/table")
+  public String getTable(){ return "table";}
+
   @PostMapping("/table")
   public String uploadFile(@RequestParam("file") MultipartFile multipartFile, Model model) {
 

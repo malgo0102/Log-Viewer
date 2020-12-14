@@ -18,7 +18,7 @@ public class FileFormat {
   // File extension
   private String fileType;
   private String regex;
-  private List<String> headers = new ArrayList<>();
+  //private List<String> headers = new ArrayList<>();
 
   public Integer getId() {
     return id;
@@ -52,11 +52,13 @@ public class FileFormat {
     this.regex = regex;
   }
 
+  /*
   public List<String> getHeaders() {
     return headers;
-  }
+  }*/
 
+  /*
   public void setHeaders(List<String> headers) {
     this.headers = headers;
-  }
+  }*/
 }

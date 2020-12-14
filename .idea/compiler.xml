@@ -8,18 +8,21 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Log-Viewer" />
         <module name="Log Viewer" />
+        <module name="LogViewer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Log Viewer" target="11" />
       <module name="Log viewer parse json playground" target="1.5" />
       <module name="Log-Viewer" target="11" />
+      <module name="LogViewer" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Log Viewer" options="-parameters" />
       <module name="Log-Viewer" options="-parameters" />
+      <module name="LogViewer" options="-parameters" />
     </option>
   </component>
 </project>
