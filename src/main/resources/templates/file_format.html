@@ -20,24 +20,18 @@
                         <div class="col">
                             <form>
                                 <div class="form-group">
-                                    <!-- TEST -->
-                                    <div th:enctype="${file}">
-                                        <h3 th:text="${file.getContentType()}"/>
-                                    </div>
                                     <label for="exampleFormControlSelect1">Select setting:</label>
                                     <select class="form-control" id="exampleFormControlSelect1">
-                                        <a class="option" th:each="setting:${file}" id="file_settings"
-                                           th:value="${setting}" th:text="${setting}"></a>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                        <!-- populates drop-down list from db using getAllSettings() from the FormatController-->
+                                        <option th:each="setting: ${settings}"
+                                                th:value="${setting.getName()}"
+                                                th:text="${setting.getName()}">
+                                        </option>
                                     </select>
                                 </div>
                             </form>
                             <a th:href="@{/file_format/add}" class="btn btn-outline-primary" role="button">Add new</a>
-                            <button type="button" class="btn btn-outline-secondary">Edit</button>
+                            <a th:href="@{/file_format/edit/{id}(id=${})}" class="btn btn-outline-secondary">Edit</a>
                             <button type="button" class="btn btn-outline-danger">Delete</button>
                             <form method="POST" th:action="@{/table}" enctype="multipart/form-data">
                                 <!--

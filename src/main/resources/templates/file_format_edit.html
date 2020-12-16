@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log Viewer - Edit File Format</title>
+    <link th:replace="fragments :: bootstrap_head">
+</head>
+<body>
+<div class="d-flex flex-column sticky-footer-wrapper">
+    <div th:replace="fragments :: navbar"></div>
+    <main class="flex-fill">
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="display-4">Parser - edit file format setting</h1>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <form action="#" th:action="@{/file_format/add}" th:object="${file_settings}" method="post">
+                                <div class="form-group">
+                                    <label for="name">Enter setting name:</label>
+                                    <input type="text" th:field="*{name}" class="form-control" id="name"
+                                           placeholder="MySetting">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fileType">Choose file type:</label>
+                                    <select th:field="*{fileType}" class="form-control" id="fileType">
+                                        <option th:value="CSV">CSV</option>
+                                        <option th:value="JSON">JSON</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="regex">Enter delimiter:</label>
+                                    <input type="text" th:field="*{regex}" class="form-control" id="regex"
+                                           placeholder="[ ,^-]+">
+                                </div>
+                                <div class="form-group">
+                                    <label for="headers">Enter column headers:</label>
+                                    <input type="text" th:field="*{headers}" class="form-control" id="headers"
+                                           placeholder="Timestamp,Temperature,Status">
+                                </div>
+                                <input type="submit" value="Save" class="btn btn-success" role="button">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:replace="fragments :: footer"></div>
+</div>
+<div th:replace="fragments :: bootstrap_body"></div>
+</body>
+</html>
