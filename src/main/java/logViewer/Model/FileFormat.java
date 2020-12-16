@@ -1,23 +1,21 @@
 package logViewer.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// @Entity
+@Entity
 public class FileFormat {
 
-//  @Id
-//  @GeneratedValue(strategy = GenerationType.IDENTITY)
-//  private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
   private String name;
   // File extension
   private String fileType;
   private String regex;
+  @ElementCollection
   private List<String> headers = new ArrayList<>();
 
 //  public Integer getId() {
@@ -27,6 +25,10 @@ public class FileFormat {
 //  public void setId(Integer id) {
 //    this.id = id;
 //  }
+
+
+  public FileFormat() {
+  }
 
   public String getName() {
     return name;
@@ -58,5 +60,16 @@ public class FileFormat {
 
   public void setHeaders(List<String> headers) {
     this.headers = headers;
+  }
+
+  @Override
+  public String toString() {
+    return "FileFormat{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", fileType='" + fileType + '\'' +
+            ", regex='" + regex + '\'' +
+            ", headers=" + headers +
+            '}';
   }
 }

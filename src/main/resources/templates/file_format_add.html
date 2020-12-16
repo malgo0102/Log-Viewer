@@ -18,28 +18,31 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <form>
+                            <form action="#" th:action="@{/file_format/add}" th:object="${file_settings}" method="post">
                                 <div class="form-group">
-                                    <label for="formGroupExampleInput">Enter setting name:</label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="MySetting">
+                                    <label for="name">Enter setting name:</label>
+                                    <input type="text" th:field="*{name}" class="form-control" id="name"
+                                           placeholder="MySetting">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Choose file type:</label>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>CSV</option>
-                                        <option>JSON</option>
+                                    <label for="fileType">Choose file type:</label>
+                                    <select th:field="*{fileType}" class="form-control" id="fileType">
+                                        <option th:value="CSV">CSV</option>
+                                        <option th:value="JSON">JSON</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="formGroupExampleInput">Enter delimiter:</label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="[ ,^-]+">
+                                    <label for="regex">Enter delimiter:</label>
+                                    <input type="text" th:field="*{regex}" class="form-control" id="regex"
+                                           placeholder="[ ,^-]+">
                                 </div>
                                 <div class="form-group">
-                                    <label for="formGroupExampleInput">Enter column headers:</label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Timestamp,Temperature,Status">
+                                    <label for="headers">Enter column headers:</label>
+                                    <input type="text" th:field="*{headers}" class="form-control" id="headers"
+                                           placeholder="Timestamp,Temperature,Status">
                                 </div>
+                                <input type="submit" value="Save" class="btn btn-success" role="button">
                             </form>
-                            <a href="/file_format" class="btn btn-success" role="button">Save</a>
                         </div>
                     </div>
                 </div>

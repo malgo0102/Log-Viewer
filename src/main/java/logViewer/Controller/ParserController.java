@@ -18,16 +18,11 @@ public class ParserController {
   TableData tableData;
   @PostMapping("/table")
   public String uploadFile(@RequestParam("file") MultipartFile multipartFile, Model model) {
-
-    if (multipartFile.isEmpty()) {
-      model.addAttribute("error", true);
-      model.addAttribute("message", "Please select a CSV file to upload.");
-    } else {
       try {
         //if (csv file):
        Parser parser = new CsvParser();
         // if (json file):
-      //  Parser parser = new JsonParser();
+        // Parser parser = new JsonParser();
 
         String file = parser.readFile(multipartFile);
         tableData = parser.parse(file);
@@ -43,7 +38,6 @@ public class ParserController {
         model.addAttribute("error", true);
         model.addAttribute("message", "Error occurred: " + ex.getMessage());
       }
-    }
 
     return "table";
   }

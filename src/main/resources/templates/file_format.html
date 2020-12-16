@@ -20,9 +20,14 @@
                         <div class="col">
                             <form>
                                 <div class="form-group">
+                                    <!-- TEST -->
+                                    <div th:enctype="${file}">
+                                        <h3 th:text="${file.getContentType()}"/>
+                                    </div>
                                     <label for="exampleFormControlSelect1">Select setting:</label>
                                     <select class="form-control" id="exampleFormControlSelect1">
-                                        <a class="option" th:each="setting:${file_settings}" id = "file_settings" th:value="${setting}" th:text="${setting}"></a>
+                                        <a class="option" th:each="setting:${file}" id="file_settings"
+                                           th:value="${setting}" th:text="${setting}"></a>
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -31,10 +36,19 @@
                                     </select>
                                 </div>
                             </form>
-                            <a href="/file_format/add" class="btn btn-outline-primary" role="button">Add new</a>
+                            <a th:href="@{/file_format/add}" class="btn btn-outline-primary" role="button">Add new</a>
                             <button type="button" class="btn btn-outline-secondary">Edit</button>
                             <button type="button" class="btn btn-outline-danger">Delete</button>
-                            <a href="/table" class="btn btn-success float-right" role="button">Import</a>
+                            <form method="POST" th:action="@{/table}" enctype="multipart/form-data">
+                                <!--
+                                <div class="form-group mt-3">
+                                    <input type="file" name="file" class="form-control-file" id="file">
+                                </div> -->
+                                <button type="submit" class="btn btn-success float-right">Parse File</button>
+
+                            </form>
+
+                            <!--<a href="/table" class="btn btn-success float-right" role="button">Parse File</a> -->
                         </div>
                     </div>
                 </div>
