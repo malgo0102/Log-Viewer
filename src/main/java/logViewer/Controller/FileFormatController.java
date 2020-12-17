@@ -2,14 +2,15 @@ package logViewer.Controller;
 
 import logViewer.Model.FileFormat;
 
+import logViewer.Parser.CsvParser;
+import logViewer.Parser.Parser;
 import logViewer.Repository.FileFormatRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -47,6 +48,31 @@ public class FileFormatController {
         model.addAttribute("settings", settings);
 
         return "file_format";
+    }
+
+    @PostMapping("/file_format")
+    public String uploadFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request, Model m) {
+        if (multipartFile.isEmpty()) {
+            m.addAttribute("message", "Please select a file to upload!");
+            return "index";
+        } else {
+            //if (csv file):
+            Parser parser = new CsvParser();
+            // if (json file):
+            // Parser parser = new JsonParser();
+            try {
+                String file = parser.readFile(multipartFile);
+                // https://stackoverflow.com/questions/18791645/how-to-use-session-attributes-in-spring-mvc
+                request.getSession().setAttribute("file", file);
+                // m.addAttribute("file", file);
+            } catch (Exception e) {
+                m.addAttribute("error", true);
+                m.addAttribute("message", "Error occurred: " + e.getMessage());
+            }
+        }
+
+        return "file_format";
+
     }
 
     // todo

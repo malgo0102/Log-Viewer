@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,15 +17,22 @@ import java.util.List;
 public class ParserController {
 
   TableData tableData;
+
+  //@GetMapping("/table")
+  //public String showTable() { return "table"; }
+
   @PostMapping("/table")
-  public String uploadFile(@RequestParam("file") MultipartFile multipartFile, Model model) {
+  public String uploadFile(HttpServletRequest request, Model model) {
       try {
         //if (csv file):
        Parser parser = new CsvParser();
         // if (json file):
         // Parser parser = new JsonParser();
 
-        String file = parser.readFile(multipartFile);
+        //String file = parser.readFile(multipartFile);
+        //request.getSession().setAttribute("file", file);
+        String file = (String)request.getSession().getAttribute("file");
+
         tableData = parser.parse(file);
         List<List<String>> rows = tableData.getRows();
         List<String> headers = tableData.getHeaders();

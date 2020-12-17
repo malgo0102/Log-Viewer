@@ -38,10 +38,10 @@
                 <button type="button" class="btn btn-outline-secondary">Show Graph</button>
             </div>
             <!-- Display list of events -->
-            <div class="jumbotron" th:if="${#lists.isEmpty(rows)}">
+            <div th:if="${#lists.isEmpty(rows)}">
                 <h1 class="display-4"> Not found </h1>
             </div>
-            <div class="jumbotron" th:unless="${#lists.isEmpty(rows)}">
+            <div th:unless="${#lists.isEmpty(rows)}">
             <table class="table table-sm table-bordered">
                 <thead>
                 <tr>
