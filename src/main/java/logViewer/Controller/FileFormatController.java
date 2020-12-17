@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -47,11 +48,14 @@ public class FileFormatController {
     }
 
     // todo
-    // this method will edit a selected setting and update it in the db
+    // this method will fetch the selected setting from db and display it in a form to be updated
     @GetMapping("file_format/edit/{id}")
-    public String editSetting(@PathVariable("id")long id, Model model){
-
-        return "file_format";
+    public String showFormEdit(@PathVariable("id") long id, Model model) {
+        FileFormat fileFormat = fileFormatRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid SettingsId: " + id));
+        System.out.println(id);
+        model.addAttribute("file_format", fileFormat);
+        return "file_format_edit";
     }
 
     // todo

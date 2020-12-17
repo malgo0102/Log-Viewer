@@ -20,28 +20,27 @@
                         <div class="col">
                             <form>
                                 <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Select setting:</label>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <!-- populates drop-down list from db using getAllSettings() from the FormatController-->
+                                    <label for="item">Select setting:</label>
+                                    <!-- populates drop-down list from db -->
+                                    <select class="form-control" id="item">
                                         <option th:each="setting: ${settings}"
-                                                th:value="${setting.getName()}"
-                                                th:text="${setting.getName()}">
+                                                th:value="${setting.name}"
+                                                th:text="${setting.name}">
                                         </option>
                                     </select>
                                 </div>
-                            </form>
                             <a th:href="@{/file_format/add}" class="btn btn-outline-primary" role="button">Add new</a>
-                            <a th:href="@{/file_format/edit/{id}(id=${})}" class="btn btn-outline-secondary">Edit</a>
+                            <!--<a th:href="@{/file_format/edit/}" class="btn btn-outline-secondary">Edit</a>-->
+                                <a th:href="@{/file_format/add}" class="btn btn-outline-primary" role="button">Edit</a>
                             <button type="button" class="btn btn-outline-danger">Delete</button>
-                            <form method="POST" th:action="@{/table}" enctype="multipart/form-data">
-                                <!--
-                                <div class="form-group mt-3">
-                                    <input type="file" name="file" class="form-control-file" id="file">
-                                </div> -->
-                                <button type="submit" class="btn btn-success float-right">Parse File</button>
-
                             </form>
-
+                            <form method="POST" th:action="@{/table}" enctype="multipart/form-data">
+                                <button type="submit" class="btn btn-success float-right">Parse File</button>
+                            </form>
+                            <!--
+                            <div class="form-group mt-3">
+                                <input type="file" name="file" class="form-control-file" id="file">
+                            </div> -->
                             <!--<a href="/table" class="btn btn-success float-right" role="button">Parse File</a> -->
                         </div>
                     </div>
