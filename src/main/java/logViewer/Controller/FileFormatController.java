@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,10 +41,11 @@ public class FileFormatController {
 
     // this method will fetch all settings from the db and populate the form drop-down list
     @GetMapping("file_format")
-    public String getAllSettings(Model model) {
+    public String getAllSettings(FileFormat fileFormat, Model model) {
         Iterable<FileFormat> settings = fileFormatRepo.findAll();
         //settings.forEach(System.out::println);
         model.addAttribute("settings", settings);
+
         return "file_format";
     }
 
