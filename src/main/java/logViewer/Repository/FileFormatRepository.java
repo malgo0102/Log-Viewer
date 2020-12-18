@@ -5,8 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FileFormatRepository extends CrudRepository<FileFormat, Long> {
+public interface FileFormatRepository extends CrudRepository<FileFormat, Integer> {
 
-    @Override
-    FileFormat save(FileFormat fileFormat);
 }
