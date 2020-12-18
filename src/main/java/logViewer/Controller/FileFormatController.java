@@ -10,8 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+<<<<<<< HEAD
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+=======
+>>>>>>> parent of 4f70db7 (add setting working)
 import java.util.List;
 import java.util.Optional;
 
@@ -42,11 +45,10 @@ public class FileFormatController {
 
     // this method will fetch all settings from the db and populate the form drop-down list
     @GetMapping("file_format")
-    public String getAllSettings(FileFormat fileFormat, Model model) {
+    public String getAllSettings(Model model) {
         Iterable<FileFormat> settings = fileFormatRepo.findAll();
         //settings.forEach(System.out::println);
         model.addAttribute("settings", settings);
-
         return "file_format";
     }
 
