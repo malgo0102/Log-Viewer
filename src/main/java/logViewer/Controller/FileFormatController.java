@@ -42,7 +42,7 @@ public class FileFormatController {
 
     // this method will fetch all settings from the db and populate the form drop-down list
     @GetMapping("file_format")
-    public String getAllSettings(FileFormat fileFormat, Model model) {
+    public String getAllSettings(Model model) {
         Iterable<FileFormat> settings = fileFormatRepo.findAll();
         //settings.forEach(System.out::println);
         model.addAttribute("file_format", new FileFormat());
@@ -52,7 +52,7 @@ public class FileFormatController {
     }
 
     @PostMapping("/file_format")
-    public String uploadFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request, Model m) {
+    public String uploadFile(@RequestParam("file") MultipartFile multipartFile, @ModelAttribute("file_format")FileFormat fileFormat,HttpServletRequest request, Model m) {
         if (multipartFile.isEmpty()) {
             m.addAttribute("message", "Please select a file to upload!");
             return "index";
