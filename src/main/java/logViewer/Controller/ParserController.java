@@ -18,8 +18,25 @@ public class ParserController {
 
   TableData tableData;
 
-  //@GetMapping("/table")
-  //public String showTable() { return "table"; }
+  @GetMapping("/table")
+  public String showTable(HttpServletRequest request, Model model) {
+    tableData = (TableData) request.getSession().getAttribute("tableData");
+
+    if (tableData == null) {
+       //model.addAttribute("message", "Please select a file to upload!");
+        return "table";
+    }
+
+    List<List<String>> rows = tableData.getRows();
+    List<String> headers = tableData.getHeaders();
+
+    model.addAttribute("showSearch", true);
+    model.addAttribute("error", false);
+    model.addAttribute("headers", headers);
+    model.addAttribute("rows", rows);
+
+    return "table";
+  }
 
   @PostMapping("/table")
   public String uploadFile(HttpServletRequest request, Model model) {
@@ -36,6 +53,8 @@ public class ParserController {
         tableData = parser.parse(file);
         List<List<String>> rows = tableData.getRows();
         List<String> headers = tableData.getHeaders();
+
+        request.getSession().setAttribute("tableData", tableData);
 
         model.addAttribute("showSearch", true);
         model.addAttribute("error", false);
