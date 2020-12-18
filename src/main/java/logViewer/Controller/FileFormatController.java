@@ -33,7 +33,7 @@ public class FileFormatController {
     }
 
     @PostMapping("/file_format/add")
-    public String saveSetting(@ModelAttribute("file_settings") FileFormat fileFormat) {
+    public String saveSetting(@ModelAttribute("file_format") FileFormat fileFormat) {
         // save file format setting to database
         //System.out.println(fileFormat.toString());
         fileFormatRepo.save(fileFormat);
@@ -42,10 +42,10 @@ public class FileFormatController {
 
     // this method will fetch all settings from the db and populate the form drop-down list
     @GetMapping("file_format")
-    public String getAllSettings(FileFormat fileFormat, Model model) {
+    public String getAllSettings( Model model) {
         Iterable<FileFormat> settings = fileFormatRepo.findAll();
         //settings.forEach(System.out::println);
-        model.addAttribute("item", new FileFormat());
+        model.addAttribute("file_format", new FileFormat());
         model.addAttribute("settings", settings);
 
         return "file_format";
