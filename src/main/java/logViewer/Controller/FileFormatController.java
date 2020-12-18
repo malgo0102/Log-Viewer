@@ -10,11 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-<<<<<<< HEAD
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
-=======
->>>>>>> parent of 4f70db7 (add setting working)
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +26,7 @@ public class FileFormatController {
     }
 
     @GetMapping("/file_format/add")
-    public String getFileSettingForm(@ModelAttribute("item")FileFormat fileFormat, Model model) {
+    public String getFileSettingForm(Model model) {
         // create model attribute to bind form data
         model.addAttribute("file_settings", new FileFormat());
         return "file_format_add";
