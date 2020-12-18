@@ -26,7 +26,7 @@ public class FileFormatController {
     }
 
     @GetMapping("/file_format/add")
-    public String getFileSettingForm(@ModelAttribute("item")FileFormat fileFormat, Model model) {
+    public String getFileSettingForm(Model model) {
         // create model attribute to bind form data
         model.addAttribute("file_settings", new FileFormat());
         return "file_format_add";
