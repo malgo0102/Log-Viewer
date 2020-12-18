@@ -18,21 +18,23 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <form>
+                            <form th:object="${item}">
                                 <div class="form-group">
                                     <label for="item">Select setting:</label>
                                     <!-- populates drop-down list from db -->
-                                    <select class="form-control" id="item">
+                                    <select th:field="*{id}" class="form-control" id="item">
                                         <option th:each="setting: ${settings}"
-                                                th:value="${setting.name}"
+                                                th:value="${setting.id}"
                                                 th:text="${setting.name}">
                                         </option>
                                     </select>
                                 </div>
-                            <a th:href="@{/file_format/add}" class="btn btn-outline-primary" role="button">Add new</a>
-                            <!--<a th:href="@{/file_format/edit/{id}()" class="btn btn-outline-secondary">Edit</a> -->
-                            <button type="button" class="btn btn-outline-danger">Delete</button>
+                                <a th:href="@{/file_format/add}" class="btn btn-outline-primary" role="button">Add new</a>
+                                <a th:href="@{/file_format/edit/{id}(id=${item.getId()})}" class="btn btn-outline-secondary">Edit</a>
+                                <button type="button" class="btn btn-outline-danger">Delete</button>
                             </form>
+
+
                             <form method="POST" th:action="@{/table}" enctype="multipart/form-data">
                                 <button type="submit" class="btn btn-success float-right">Parse File</button>
                             </form>

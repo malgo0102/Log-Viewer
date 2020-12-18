@@ -26,7 +26,7 @@ public class FileFormatController {
     }
 
     @GetMapping("/file_format/add")
-    public String getFileSettingForm(Model model) {
+    public String getFileSettingForm(@ModelAttribute("item")FileFormat fileFormat, Model model) {
         // create model attribute to bind form data
         model.addAttribute("file_settings", new FileFormat());
         return "file_format_add";
@@ -45,6 +45,7 @@ public class FileFormatController {
     public String getAllSettings(FileFormat fileFormat, Model model) {
         Iterable<FileFormat> settings = fileFormatRepo.findAll();
         //settings.forEach(System.out::println);
+        model.addAttribute("item", new FileFormat());
         model.addAttribute("settings", settings);
 
         return "file_format";
@@ -78,10 +79,11 @@ public class FileFormatController {
     // todo
     // this method will fetch the selected setting from db and display it in a form to be updated
     @GetMapping("file_format/edit/{id}")
-    public String showFormEdit(@PathVariable("id") long id, Model model) {
-        FileFormat fileFormat = fileFormatRepo.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid SettingsId: " + id));
+    public String showFormEdit(@PathVariable("id") int id, Model model) {
         System.out.println(id);
+        Optional<FileFormat> fileFormat = fileFormatRepo.findById(id);
+        System.out.println(fileFormat);
+                //.orElseThrow(() -> new IllegalArgumentException("Invalid SettingsId: " + id));
         model.addAttribute("file_format", fileFormat);
         return "file_format_edit";
     }
