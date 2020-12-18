@@ -20,18 +20,20 @@
                         <div class="col">
                             <form>
                                 <div class="form-group">
-                                    <label for="item">Select setting:</label>
+                                     <label for="item">Select setting:</label>
                                     <!-- populates drop-down list from db -->
-                                    <select class="form-control" id="item">
+                                    <select th:field="*{file_format.id}" class="form-control" id="item">
                                         <option th:each="setting: ${settings}"
                                                 th:value="${setting.id}"
-                                                th:text="${setting.name}">
+                                                th:text="${setting.name}"
+                                                th:selected="${file_format.id == setting.id}">
                                         </option>
                                     </select>
                                 </div>
-                                <a th:href="@{/file_format/add}" class="btn btn-outline-primary" role="button">Add new</a>
-                                <a th:href="@{/file_format/add}" class="btn btn-outline-primary" role="button">Edit</a>
-                                <!--<a th:href="@{/file_format/edit/{id}(id=${item.getId()})}" class="btn btn-outline-secondary">Edit</a> -->
+                                <a th:href="@{/file_format/add}" class="btn btn-outline-primary" role="button">Add
+                                    new</a>
+                                <a th:href="@{/file_format/edit/{id}/(id=${file_format.id})}"
+                                   class="btn btn-outline-secondary">Edit</a>
                                 <button type="button" class="btn btn-outline-danger">Delete</button>
                             </form>
 
