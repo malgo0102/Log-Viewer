@@ -35,7 +35,6 @@ public class FileFormatController {
     @PostMapping("/file_format")
     public String applyFileFormat(@ModelAttribute("file_format") FileFormat fileFormat, HttpServletRequest request, Model m) {
 
-
         return "file_format";
 
     }
@@ -44,6 +43,7 @@ public class FileFormatController {
     public String getFileSettingForm(Model model) {
         // create model attribute to bind form data
         model.addAttribute("fileFormat", new FileFormat());
+
         return "file_format_add";
     }
 
@@ -52,6 +52,7 @@ public class FileFormatController {
         // save file format setting to database
         //System.out.println(fileFormat.toString());
         fileFormatRepo.save(fileFormat);
+
         return "redirect:/file_format";
     }
 
@@ -64,6 +65,7 @@ public class FileFormatController {
         System.out.println(fileFormat);
         //.orElseThrow(() -> new IllegalArgumentException("Invalid SettingsId: " + id));
         model.addAttribute("file_format", fileFormat);
+
         return "file_format_edit";
     }
 

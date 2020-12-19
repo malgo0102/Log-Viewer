@@ -14,6 +14,7 @@ public class MainController {
 
     @GetMapping("/")
     public String showIndex() {
+
         return "index";
     }
 
@@ -22,6 +23,7 @@ public class MainController {
     public String uploadFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request, Model m) {
         if (multipartFile.isEmpty()) {
             m.addAttribute("message", "Please select a file to upload!");
+
             return "index";
         } else {
             Parser parser = new CsvParser();
@@ -41,11 +43,13 @@ public class MainController {
 
     @GetMapping("/about")
     public String showAbout() {
+
         return "about";
     }
 
     @GetMapping("/contact")
     public String showContact() {
+
         return "contact";
     }
 }

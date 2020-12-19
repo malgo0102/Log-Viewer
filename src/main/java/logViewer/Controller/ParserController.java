@@ -23,6 +23,7 @@ public class ParserController {
 
     if (tableData == null) {
        //model.addAttribute("message", "Please select a file to upload!");
+
         return "table";
     }
 
