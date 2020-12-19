@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 
 @Controller
@@ -15,7 +16,9 @@ public class FileFormatController {
 
     FileFormatRepository fileFormatRepo;
 
-    public FileFormatController(FileFormatRepository fileFormatRepo) { this.fileFormatRepo = fileFormatRepo; }
+    public FileFormatController(FileFormatRepository fileFormatRepo) {
+        this.fileFormatRepo = fileFormatRepo;
+    }
 
     // Fetch settings (file formats) from the db and populate the form drop-down list
     @GetMapping("file_format")
@@ -48,7 +51,6 @@ public class FileFormatController {
         // save file format setting to database
         //System.out.println(fileFormat.toString());
         fileFormatRepo.save(fileFormat);
-
         return "redirect:/file_format";
     }
 
@@ -57,14 +59,28 @@ public class FileFormatController {
     @GetMapping("file_format/edit/{id}")
     public String showFormEdit(@PathVariable("id") int id, Model model) {
         System.out.println(id);
-
-        //.orElseThrow(() -> new IllegalArgumentException("Invalid SettingsId: " + id));
-        model.addAttribute("file_format", fileFormatRepo.findById(id));
-
+        FileFormat fileFormat = fileFormatRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid SettingsId: " + id));
+        model.addAttribute("fileFormat", fileFormat);
         return "file_format_edit";
     }
 
-    // todo
+    @PostMapping("/file_format/update/{id}")
+    public String updateSetting(@PathVariable("id") int id, @ModelAttribute("fileFormat") FileFormat fileFormat,
+                                Model model) {
+        fileFormatRepo.save(fileFormat);
+        model.addAttribute("fileFormat", fileFormatRepo.findAll());
+        return "redirect:/file_format";
+    }
+
     // Remove a selected setting from the db
+    @GetMapping
+    public String deleteSetting(@PathVariable("id") int id, Model model) {
+        FileFormat fileFormat = fileFormatRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid setting id: " + id));
+        fileFormatRepo.delete(fileFormat);
+        model.addAttribute("fileFormat", fileFormatRepo.findAll());
+        return "file_format";
+    }
 
 }

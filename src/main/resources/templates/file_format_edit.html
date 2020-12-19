@@ -18,8 +18,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <!--
-                            <form action="#" th:action="@{/file_format/add}" th:object="${file_settings}" method="post">
+
+                            <form action="#" th:action="@{/file_format/update/{id}(id=${fileFormat.id})}" th:object="${fileFormat}" method="post">
+
                                 <div class="form-group">
                                     <label for="name">Enter setting name:</label>
                                     <input type="text" th:field="*{name}" class="form-control" id="name"
@@ -42,8 +43,8 @@
                                     <input type="text" th:field="*{headers}" class="form-control" id="headers"
                                            placeholder="Timestamp,Temperature,Status">
                                 </div>
-                                <input type="submit" value="Save" class="btn btn-success" role="button">
-                            </form> -->
+                                <input type="submit" value="Edit" class="btn btn-success" role="button">
+                            </form>
                         </div>
                     </div>
                 </div>
