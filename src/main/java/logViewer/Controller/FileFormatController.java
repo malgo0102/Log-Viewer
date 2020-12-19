@@ -1,14 +1,13 @@
 package logViewer.Controller;
 
 import logViewer.Model.FileFormat;
-
 import logViewer.Repository.FileFormatRepository;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Optional;
 
 
 @Controller
@@ -23,10 +22,10 @@ public class FileFormatController {
     // Fetch settings (file formats) from the db and populate the form drop-down list
     @GetMapping("file_format")
     public String getAllSettings(Model model) {
-        Iterable<FileFormat> fileFormats = fileFormatRepo.findAll();
+        //Iterable<FileFormat> fileFormats = fileFormatRepo.findAll();
         //settings.forEach(System.out::println);
         //model.addAttribute("fileFormat", new FileFormat());
-        model.addAttribute("fileFormats", fileFormats);
+        model.addAttribute("fileFormats", fileFormatRepo.findAll());
 
         return "file_format";
     }
@@ -61,10 +60,9 @@ public class FileFormatController {
     @GetMapping("file_format/edit/{id}")
     public String showFormEdit(@PathVariable("id") int id, Model model) {
         System.out.println(id);
-        Optional<FileFormat> fileFormat = fileFormatRepo.findById(id);
-        System.out.println(fileFormat);
+
         //.orElseThrow(() -> new IllegalArgumentException("Invalid SettingsId: " + id));
-        model.addAttribute("file_format", fileFormat);
+        model.addAttribute("file_format", fileFormatRepo.findById(id));
 
         return "file_format_edit";
     }

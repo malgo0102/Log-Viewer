@@ -3,6 +3,7 @@ package logViewer.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class TableData {
 
   private List<String> headers = new ArrayList<>();
