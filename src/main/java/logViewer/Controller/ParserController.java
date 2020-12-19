@@ -7,7 +7,6 @@ import logViewer.Parser.Parser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -75,15 +74,15 @@ public class ParserController {
     List<String> headers = tableData.getHeaders();
     List<List<String>> filteredRows = new ArrayList<>();
 
-      for (List row : rows) {
+    for (List row : rows) {
       if (row.contains(search)) {
         filteredRows.add(row);
       }
     }
 
-      model.addAttribute("headers", headers);
-      model.addAttribute("rows", filteredRows);
+    model.addAttribute("headers", headers);
+    model.addAttribute("rows", filteredRows);
 
-      return "table";
-    }
+    return "table";
+  }
 }

@@ -15,8 +15,13 @@
             <div class="jumbotron">
                 <h1 class="display-4">Welcome to Log Viewer</h1>
                 <hr>
+                <!-- Display error if any -->
+                <div class="alert alert-danger" role="alert" th:if="${error}">
+                    <strong>Error:</strong>
+                    <span th:text="${message}"></span>
+                </div>
                 <!-- Select file  -->
-                <form method="POST" th:action="@{/file_format}" enctype="multipart/form-data">
+                <form method="POST" th:action="@{/}" enctype="multipart/form-data">
                     <div th:if="${message}">
                         <h3 th:text="${message}"/>
                     </div>

@@ -17,21 +17,27 @@ public class MainController {
         return "index";
     }
 
-//    // TESTING
-//    @PostMapping("/file_format")
-//    public String goToSettings(@RequestParam("file") MultipartFile file, Model model) {
-//        //FileFormat fileFormat = new FileFormat();
-//        if (file.isEmpty()) {
-//            model.addAttribute("message", "Please select a file to upload!");
-//            return "index";
-//        }
-//        model.addAttribute("file", file);
-//        //model.addAttribute("file_settings", fileFormat.getName());
-//
-//        return "file_format";
-//    }
+    // Read file and save it to session as a String
+    @PostMapping("/")
+    public String uploadFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request, Model m) {
+        if (multipartFile.isEmpty()) {
+            m.addAttribute("message", "Please select a file to upload!");
+            return "index";
+        } else {
+            Parser parser = new CsvParser();
+            try {
+                String file = parser.readFile(multipartFile);
+                // https://stackoverflow.com/questions/18791645/how-to-use-session-attributes-in-spring-mvc
+                request.getSession().setAttribute("file", file);
+                // m.addAttribute("file", file);
+            } catch (Exception e) {
+                m.addAttribute("error", true);
+                m.addAttribute("message", "Error occurred: " + e.getMessage());
+            }
+        }
 
-
+        return "redirect:/file_format";
+    }
 
     @GetMapping("/about")
     public String showAbout() {
