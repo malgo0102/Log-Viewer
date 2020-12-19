@@ -18,7 +18,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <form action="#" th:action="@{/file_format/add}" th:object="${file_settings}" method="post">
+                            <form action="#" th:action="@{/file_format/add}" th:object="${fileFormat}" method="post">
                                 <div class="form-group">
                                     <label for="name">Enter setting name:</label>
                                     <input type="text" th:field="*{name}" class="form-control" id="name"
