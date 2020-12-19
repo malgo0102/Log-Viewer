@@ -20,20 +20,22 @@
                         <div class="col">
                             <form>
                                 <div class="form-group">
-                                     <label for="item">Select setting:</label>
+                                     <label for="settings">Select setting:</label>
                                     <!-- populates drop-down list from db -->
-                                    <select th:field="*{file_format.id}" class="form-control" id="item">
-                                        <option th:each="setting: ${settings}"
-                                                th:value="${setting.id}"
-                                                th:text="${setting.name}"
-                                                th:selected="${file_format.id == setting.id}">
+                                    <select th:field="*{fileFormats}" class="form-control" id="settings">
+                                        <option value="0">All</option>
+                                        <option th:each="fileFormat: ${fileFormats}"
+                                                th:value="${fileFormat.id}"
+                                                th:text="${fileFormat.name}"
+                                                th:selected="${fileFormat.id}">
                                         </option>
                                     </select>
                                 </div>
                                 <a th:href="@{/file_format/add}" class="btn btn-outline-primary" role="button">Add
                                     new</a>
-                                <a th:href="@{/file_format/edit/{id}/(id=${file_format.id})}"
-                                   class="btn btn-outline-secondary">Edit</a>
+<!--                                <a th:href="@{/file_format/edit/{id}}"-->
+<!--                                   class="btn btn-outline-secondary" id="editBtn">Edit</a>-->
+                                <button type="button" class="btn btn-outline-secondary" id="editBtn">Edit</button>
                                 <button type="button" class="btn btn-outline-danger">Delete</button>
                             </form>
 
