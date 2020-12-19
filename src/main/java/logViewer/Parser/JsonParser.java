@@ -46,4 +46,5 @@ public class JsonParser extends Parser {
 
         return tableData;
     }
+
 }

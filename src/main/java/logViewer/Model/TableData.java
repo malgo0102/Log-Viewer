@@ -25,5 +25,4 @@ public class TableData {
     this.rows = rows;
   }
 
-
 }

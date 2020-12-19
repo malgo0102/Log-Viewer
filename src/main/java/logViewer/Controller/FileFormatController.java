@@ -15,9 +15,7 @@ public class FileFormatController {
 
     FileFormatRepository fileFormatRepo;
 
-    public FileFormatController(FileFormatRepository fileFormatRepo) {
-        this.fileFormatRepo = fileFormatRepo;
-    }
+    public FileFormatController(FileFormatRepository fileFormatRepo) { this.fileFormatRepo = fileFormatRepo; }
 
     // Fetch settings (file formats) from the db and populate the form drop-down list
     @GetMapping("file_format")
@@ -35,7 +33,6 @@ public class FileFormatController {
     public String applyFileFormat(@ModelAttribute("file_format") FileFormat fileFormat, HttpServletRequest request, Model m) {
 
         return "file_format";
-
     }
 
     @GetMapping("/file_format/add")
@@ -69,6 +66,5 @@ public class FileFormatController {
 
     // todo
     // Remove a selected setting from the db
-
 
 }

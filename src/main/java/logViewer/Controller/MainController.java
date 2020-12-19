@@ -15,10 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 public class MainController {
 
     @GetMapping("/")
-    public String showIndex() {
-
-        return "index";
-    }
+    public String showIndex() { return "index"; }
 
     // Read file and save it to session as a String
     @PostMapping("/")
@@ -44,14 +41,9 @@ public class MainController {
     }
 
     @GetMapping("/about")
-    public String showAbout() {
-
-        return "about";
-    }
+    public String showAbout() { return "about"; }
 
     @GetMapping("/contact")
-    public String showContact() {
+    public String showContact() { return "contact"; }
 
-        return "contact";
-    }
 }

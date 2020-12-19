@@ -12,7 +12,6 @@ import java.util.Optional;
 public interface FileFormatRepository extends CrudRepository<FileFormat, Integer> {
 
     Optional<FileFormat> findById(int id);
-
     Iterable<FileFormat> findAll();
 
 }

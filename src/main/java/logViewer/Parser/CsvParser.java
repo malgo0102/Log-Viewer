@@ -45,4 +45,5 @@ public class CsvParser extends Parser{
 
     return tableData;
   }
+
 }
