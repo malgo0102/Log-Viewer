@@ -38,7 +38,7 @@ public class ParserController {
   }
 
   @PostMapping("/table")
-  public String uploadFile(HttpServletRequest request, Model model) {
+  public String parseFile(HttpServletRequest request, Model model) {
       try {
         //if (csv file):
        Parser parser = new CsvParser();
