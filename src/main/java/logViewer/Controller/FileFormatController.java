@@ -23,9 +23,7 @@ public class FileFormatController {
     // Fetch settings (file formats) from db and populate the form drop-down list
     @GetMapping("file_format")
     public String getAllSettings(Model model) {
-        //Iterable<FileFormat> fileFormats = fileFormatRepo.findAll();
         //settings.forEach(System.out::println);
-        //model.addAttribute("fileFormat", new FileFormat());
         model.addAttribute("fileFormats", fileFormatRepo.findAll());
 
         return "file_format";
@@ -34,12 +32,13 @@ public class FileFormatController {
     //  Apply file format to file contents
     @PostMapping("/file_format")
     public String applyFileFormat(@ModelAttribute("file_format") FileFormat fileFormat, HttpServletRequest request, Model m) {
+
         return "file_format";
     }
 
     @GetMapping("/file_format/add")
     public String getFileSettingForm(Model model) {
-        // create model attribute to bind form data
+        // Create model attribute to bind form data
         model.addAttribute("fileFormat", new FileFormat());
 
         return "file_format_add";
@@ -49,6 +48,7 @@ public class FileFormatController {
     public String saveSetting(@ModelAttribute("fileFormat") FileFormat fileFormat) {
         //System.out.println(fileFormat.toString());
         fileFormatRepo.save(fileFormat);
+
         return "redirect:/file_format";
     }
 
@@ -56,17 +56,20 @@ public class FileFormatController {
     @GetMapping("file_format/edit/{id}")
     public String showFormEdit(@PathVariable("id") int id, Model model) {
         FileFormat fileFormat = fileFormatRepo.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid SettingsId: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid file format id: " + id));
+
         model.addAttribute("fileFormat", fileFormat);
+
         return "file_format_edit";
     }
 
     // Updates db after a setting is edited
     @PostMapping("/file_format/update/{id}")
-    public String updateSetting(@PathVariable("id") int id, @ModelAttribute("fileFormat") FileFormat fileFormat,
-                                Model model) {
+    public String updateSetting(@PathVariable("id") int id, @ModelAttribute("fileFormat") FileFormat fileFormat, Model model) {
         fileFormatRepo.save(fileFormat);
-        model.addAttribute("fileFormat", fileFormatRepo.findAll());
+
+        model.addAttribute("fileFormats", fileFormatRepo.findAll());
+
         return "redirect:/file_format";
     }
 
@@ -74,10 +77,13 @@ public class FileFormatController {
     @GetMapping("/file_format/delete/{id}")
     public String deleteSetting(@PathVariable("id") int id, Model model) {
         FileFormat fileFormat = fileFormatRepo.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid setting id: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid file format id: " + id));
         fileFormatRepo.delete(fileFormat);
+        // Show info: "Setting " + fileFormat.name + " was deleted from the database."
+
         model.addAttribute("fileFormats", fileFormatRepo.findAll());
-        return "file_format";
+
+        return "redirect:/file_format";
     }
 
 }

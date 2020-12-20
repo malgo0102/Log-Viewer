@@ -43,7 +43,8 @@
                                     <input type="text" th:field="*{headers}" class="form-control" id="headers"
                                            placeholder="Timestamp,Temperature,Status">
                                 </div>
-                                <input type="submit" value="Edit" class="btn btn-success" role="button">
+                                <input type="submit" value="Save change" class="btn btn-success" role="button">
+                                <a th:href="@{/file_format}" class="btn btn-outline-secondary" role="button">Cancel</a>
                             </form>
                         </div>
                     </div>

@@ -33,21 +33,12 @@
                                 </div>
                                 <a th:href="@{/file_format/add}" class="btn btn-outline-primary" role="button">Add
                                     new</a>
-<!--                                <a th:href="@{/file_format/edit/{id}}"-->
-<!--                                   class="btn btn-outline-secondary" id="editBtn">Edit</a>-->
                                 <button type="button" class="btn btn-outline-secondary" id="editBtn">Edit</button>
                                 <button type="button" class="btn btn-outline-danger" id="deleteBtn">Delete</button>
                             </form>
-
-
                             <form method="POST" th:action="@{/table}" enctype="multipart/form-data">
                                 <button type="submit" class="btn btn-success float-right">Parse File</button>
                             </form>
-                            <!--
-                            <div class="form-group mt-3">
-                                <input type="file" name="file" class="form-control-file" id="file">
-                            </div> -->
-                            <!--<a href="/table" class="btn btn-success float-right" role="button">Parse File</a> -->
                         </div>
                     </div>
                 </div>

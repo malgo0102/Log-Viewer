@@ -47,10 +47,7 @@ public class ParserController {
             // if (json file):
             // Parser parser = new JsonParser();
 
-            //String file = parser.readFile(multipartFile);
-            //request.getSession().setAttribute("file", file);
             String file = (String) request.getSession().getAttribute("file");
-
             tableData = parser.parse(file);
             List<List<String>> rows = tableData.getRows();
             List<String> headers = tableData.getHeaders();
@@ -71,7 +68,8 @@ public class ParserController {
     }
 
     @RequestMapping(value = "/table")
-    public String search(@RequestParam("search") String search, Model model) {
+    public String search(@RequestParam("search") String search, HttpServletRequest request, Model model) {
+        TableData tableData = (TableData) request.getSession().getAttribute("tableData");
         List<List<String>> rows = tableData.getRows();
         List<String> headers = tableData.getHeaders();
         List<List<String>> filteredRows = new ArrayList<>();
