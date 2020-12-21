@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
-
 @Controller
 public class FileFormatController {
 
@@ -25,7 +24,6 @@ public class FileFormatController {
     public String getAllSettings(Model model) {
         //settings.forEach(System.out::println);
         model.addAttribute("fileFormats", fileFormatRepo.findAll());
-
         return "file_format";
     }
 
