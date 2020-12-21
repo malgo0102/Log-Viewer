@@ -1,9 +1,11 @@
 package logViewer.Controller;
 
+import logViewer.Model.FileFormat;
 import logViewer.Model.TableData;
 import logViewer.Parser.CsvParser;
 import logViewer.Parser.Parser;
 
+import logViewer.Repository.FileFormatRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,14 +19,25 @@ import java.util.List;
 public class ParserController {
 
     TableData tableData;
+    FileFormatRepository fileFormatRepo;
 
-    @GetMapping("/table")
-    public String showTable(HttpServletRequest request, Model model) {
+    public ParserController(FileFormatRepository fileFormatRepo) {
+        this.fileFormatRepo = fileFormatRepo;
+    }
+
+    @GetMapping("/table/setting/{id}")
+    public String showTable(@PathVariable("id") int id, HttpServletRequest request, Model model) {
+        // Fetch selected setting from db
+        FileFormat fileFormat = fileFormatRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid file format id: " + id));
+        // Check file type
+        // if csv:
+        // check if there are custom headers or not and if yes pass them to be displayed in table
+        // pass regex to be used in parsing method;
+
         tableData = (TableData) request.getSession().getAttribute("tableData");
-
         if (tableData == null) {
             //model.addAttribute("message", "Please select a file to upload!");
-
             return "table";
         }
 
@@ -39,12 +52,12 @@ public class ParserController {
         return "table";
     }
 
-    @PostMapping("/table")
-    public String parseFile(HttpServletRequest request, Model model) {
+    @PostMapping("/table/setting/{id}")
+    public String parseFile(@PathVariable("id") int id, HttpServletRequest request, Model model) {
         try {
             //FileFormat fileFormat = (FileFormat) request.getSession().getAttribute("fileFormat");
             //String fileType = fileFormat.getFileType()
-            //if (fileType == csv):
+            //if (fileType == CSV):
                 //fileFormat.getHeaders()
                 //fileFormat.getRegex() // delimiter
             Parser parser = new CsvParser();

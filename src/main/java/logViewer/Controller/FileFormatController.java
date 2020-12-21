@@ -39,8 +39,8 @@ public class FileFormatController {
         // hide delimiter and headers form if file type chosen = json
         // check if file contains column headers:
             // 1. read first line and
-            // 2. ask user "Are these headers?" tableData.setHeaders()
-        // else apply column headers from the form - tableData.setHeaders()
+            // 2. ask user "Are these headers?" fileFormat.setHeaders()
+        // else apply column headers from the form - fileFormat.setHeaders()
 
         return "file_format";
     }
@@ -74,7 +74,7 @@ public class FileFormatController {
 
     // Updates db after a setting is edited
     @PostMapping("/file_format/update/{id}")
-    public String updateSetting(@PathVariable("id") int id, @ModelAttribute("fileFormat") FileFormat fileFormat, Model model) {
+    public String updateSetting(@ModelAttribute("fileFormat") FileFormat fileFormat, Model model) {
         fileFormatRepo.save(fileFormat);
 
         model.addAttribute("fileFormats", fileFormatRepo.findAll());
