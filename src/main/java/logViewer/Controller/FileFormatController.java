@@ -36,10 +36,10 @@ public class FileFormatController {
         // send fileFormat to @PostMapping "/table" parseFile(): request.getSession().setAttribute("fileFormat");
 
         // add fileFormat(setting):
-        // apply file type - choose csv or json - sent to @PostMapping "/table" and apply jsonParser or csvParser based on selection
         // hide delimiter and headers form if file type chosen = json
-        // apply delimiter from the form: fileFormat.setDelimiter()- assign delimiter in @PostMapping "/table" parseFile() (add "String delimiter" as argument to csvParser) fileFormat.getDelimiter()
-        // check if file contains column headers: read first line and ask user "Are these headers?" tableData.setHeaders()
+        // check if file contains column headers:
+            // 1. read first line and
+            // 2. ask user "Are these headers?" tableData.setHeaders()
         // else apply column headers from the form - tableData.setHeaders()
 
         return "file_format";
