@@ -42,10 +42,15 @@ public class ParserController {
     @PostMapping("/table")
     public String parseFile(HttpServletRequest request, Model model) {
         try {
-            //if (csv file):
+            //FileFormat fileFormat = (FileFormat) request.getSession().getAttribute("fileFormat");
+            //String fileType = fileFormat.getFileType()
+            //if (fileType == csv):
+                //fileFormat.getHeaders()
+                //fileFormat.getRegex() // delimiter
             Parser parser = new CsvParser();
-            // if (json file):
+            // if (fileType == json):
             // Parser parser = new JsonParser();
+
 
             String file = (String) request.getSession().getAttribute("file");
             tableData = parser.parse(file);
