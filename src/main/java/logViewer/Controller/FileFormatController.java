@@ -30,6 +30,12 @@ public class FileFormatController {
     //  Apply file format to file contents
     @PostMapping("/file_format")
     public String applyFileFormat(@ModelAttribute("file_format") FileFormat fileFormat, HttpServletRequest request, Model m) {
+        // retrieve fileFormat name to know ID to apply from the settings list
+        // apply file type - choose csv or json - sent to /table and apply jsonParser or csvParser
+        // hide delimiter if file chosen json
+        // apply delimiter - assign delimiter in /table (add "String delimiter" as argument to csvParser)
+        // check if file contains column headers: read first line and ask user "Are these headers?"
+        // apply column headers
 
         return "file_format";
     }
