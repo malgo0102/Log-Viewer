@@ -33,7 +33,7 @@ public class CsvParser extends Parser{
     }
 
     // Print all lines
-    rows.forEach(System.out::println);
+     rows.forEach(System.out::println);
 
     // Populate headers
     for(int i=0; i<row.size(); i++) {

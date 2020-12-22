@@ -12,54 +12,52 @@
     <div th:replace="fragments :: navbar"></div>
     <main class="flex-fill">
         <div class="container">
-                <h1 class="display-4">Chart</h1>
-                <hr>
-                <div id="container" style="width:100%; height:400px;"></div>
+            <h1 class="display-4">Chart</h1>
+            <hr>
+            <div id="container" style="width:100%; height:400px;"></div>
 
-                <script th:inline="javascript" >
-                    const textX = /*[[${hX}]]*/ [];
-                    const textY = /*[[${hY}]]*/ [];
+            <script th:inline="javascript" >
+                const textX = /*[[${hX}]]*/ [];
+                const textY = /*[[${hY}]]*/ [];
 
-                    const x = /*[[${x}]]*/ [];
-                    const y = /*[[${y}]]*/ [];
+                const x = /*[[${x}]]*/ [];
+                const y = /*[[${y}]]*/ [];
 
-                    document.addEventListener('DOMContentLoaded', function () {
-                        var chart = Highcharts.chart('container', {
-                            chart: {
-                                type: 'line'
-                            },
+                document.addEventListener('DOMContentLoaded', function () {
+                    var chart = Highcharts.chart('container', {
+                        chart: {
+                            type: 'line'
+                        },
+                        title: {
+                            text: 'Log viewer chart'
+                        },
+                        xAxis: {
                             title: {
-                                text: 'Log viewer chart'
+                                text: textX
                             },
-                            xAxis: {
-                                title: {
-                                    text: textX
+                            categories: x
+                        },
+                        yAxis: {
+                            title: {
+                                text: textY
+                            }
+                        },
+                        plotOptions: {
+                            line: {
+                                dataLabels: {
+                                    enabled: true
                                 },
-                                categories: x
-                            },
-                            yAxis: {
-                                title: {
-                                    text: textY
-                                }
-                            },
-                            plotOptions: {
-                                line: {
-                                    dataLabels: {
-                                        enabled: true
-                                    },
-                                    enableMouseTracking: false
-                                }
-                            },
-                            series: [{
-                                name: 'Log',
-                                data: y
-                            }]
-                        });
+                                enableMouseTracking: false
+                            }
+                        },
+                        series: [{
+                            name: 'Log',
+                            data: y
+                        }]
                     });
-
-                </script>
-
-                <button type="submit" class="btn btn-primary">Back</button>
+                });
+            </script>
+            <a th:href="@{/table}" class="btn btn-outline-primary" role="button">Back</a>
         </div>
     </main>
 
