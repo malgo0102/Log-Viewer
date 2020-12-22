@@ -31,6 +31,18 @@ public class ParserController {
         List<List<String>> rows = tableData.getRows();
         List<String> headers = tableData.getHeaders();
 
+
+        //Integer min = tableData.getMin(column);
+        //System.out.println(min);
+
+
+        //a,b,c,d,e;
+        //f,g,h,i,m;
+
+        //List<List<String>> rows = tableData.getRows();
+        //List<String> headers = tableData.getHeaders();
+        //model.addAttribute("min", min);
+
         model.addAttribute("showSearch", true);
         model.addAttribute("error", false);
         model.addAttribute("headers", headers);
@@ -56,6 +68,11 @@ public class ParserController {
             tableData = parser.parse(file);
             List<List<String>> rows = tableData.getRows();
             List<String> headers = tableData.getHeaders();
+
+
+            // List<String> column = new ArrayList<>();
+            // List<List<String>> columns = new ArrayList<>();
+            tableData.rowsToColumns(rows);
 
             request.getSession().setAttribute("tableData", tableData);
 
