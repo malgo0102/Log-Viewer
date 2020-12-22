@@ -108,10 +108,10 @@
             <!-- Display list of events -->
 
             <div class="form-group">
-                <h3>Choose chart axies</h3>
+                <h3>Choose chart X and Y axis</h3>
                 <form th:action="@{/chart}"  method="GET"  modelAttribute="chart">
-                    <input name="x" placeholder="Type X axies">
-                    <input name="y" placeholder="Type Y axies">
+                    <input name="x" placeholder="Type X axis">
+                    <input name="y" placeholder="Type Y axis">
                     <button type="submit" class="btn btn-outline-secondary">Generate chart</button>
                 </form>
             </div>
