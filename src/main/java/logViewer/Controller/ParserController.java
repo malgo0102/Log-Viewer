@@ -2,6 +2,7 @@ package logViewer.Controller;
 
 import logViewer.Model.TableData;
 import logViewer.Parser.CsvParser;
+import logViewer.Parser.JsonParser;
 import logViewer.Parser.Parser;
 
 import org.springframework.stereotype.Controller;

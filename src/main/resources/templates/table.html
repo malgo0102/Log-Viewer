@@ -37,6 +37,15 @@
             <div class="form-group">
                 <button type="button" class="btn btn-outline-secondary">Show Graph</button>
             </div>
+
+            <div class="form-group">
+                <h3>Choose chart axies</h3>
+                <form th:action="@{/chart}"  method="GET"  modelAttribute="chart">
+                    <input name="x" placeholder="Type X axies">
+                    <input name="y" placeholder="Type Y axies">
+                    <button type="submit" class="btn btn-outline-secondary">Generate chart</button>
+                </form>
+            </div>
             <!-- Display list of events -->
             <div th:if="${#lists.isEmpty(rows)}">
                 <h1 class="display-4"> Not found </h1>
