@@ -60,9 +60,18 @@ public class TableData {
         return columns;
     }
 
+    public List<Float> stringToFloatColumn(List<String> column) {
+        List<Float> columnFloat = new ArrayList<>();
+        for(String value : column) {
+            columnFloat.add(Float.parseFloat(value));
+        }
+
+        return columnFloat;
+    }
+
     public Float getMax(List<Float> column) {
         if (column == null || column.size() == 0)
-            return null;
+            return Float.MIN_VALUE;
 
         return Collections.max(column);
     }

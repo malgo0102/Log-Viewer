@@ -66,20 +66,33 @@ public class ParserController {
 
             String file = (String) request.getSession().getAttribute("file");
             tableData = parser.parse(file);
+            request.getSession().setAttribute("tableData", tableData);
+
             List<List<String>> rows = tableData.getRows();
             List<String> headers = tableData.getHeaders();
 
 
-            // List<String> column = new ArrayList<>();
-            // List<List<String>> columns = new ArrayList<>();
-            tableData.rowsToColumns(rows);
 
-            request.getSession().setAttribute("tableData", tableData);
+            List<String> columnString = new ArrayList<>();
+            List<Float> column = new ArrayList<>();
+            // List<List<String>> columns = new ArrayList<>();
+            columnString = tableData.rowsToColumns(rows).get(5);
+            try {
+                column = tableData.stringToFloatColumn(columnString);
+            } catch (Exception ex) { }
+
+            Float min = tableData.getMin(column);
+            Float max = tableData.getMax(column);
+
+            System.out.println(min);
+            System.out.println(max);
 
             model.addAttribute("showSearch", true);
             model.addAttribute("error", false);
             model.addAttribute("headers", headers);
             model.addAttribute("rows", rows);
+            model.addAttribute("min", min.toString());
+            model.addAttribute("max", max.toString());
 
         } catch (Exception ex) {
             model.addAttribute("error", true);
