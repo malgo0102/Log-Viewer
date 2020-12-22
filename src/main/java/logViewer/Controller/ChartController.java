@@ -33,7 +33,6 @@ public class ChartController {
 
             if(headers.get(i).contains(chart.getY())) {
                 for(int k = 2; k < 20; k++) {
-
                     try {
                         model.addAttribute("hY", chart.getY());
                         Float.parseFloat(rows.get(k).get(i));
@@ -43,17 +42,6 @@ public class ChartController {
                 }
             }
         }
-
-       /* for(int i = 0; i < headers.size(); i++) {
-            if (headers.get(i).contains(chart.getX())) {
-                for (int j = 2; j < 10; j++) {
-                    if (rows.get(j).get(5).equals("200") || rows.get(j).get(5).equals("302") || rows.get(j).get(5).equals("404")) {
-                        xAxies.add(rows.get(j).get(i));
-                        yAxies.add(Float.valueOf(rows.get(j).get(5)));
-                    }
-                }
-            }
-        }*/
 
         model.addAttribute("x", xAxies);
         model.addAttribute("y", yAxies);
