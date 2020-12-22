@@ -1,5 +1,6 @@
 package logViewer.Parser;
 
+import logViewer.Model.FileFormat;
 import logViewer.Model.TableData;
 
 import java.io.FileReader;
@@ -13,7 +14,7 @@ import org.json.simple.parser.JSONParser;
 public class JsonParser extends Parser {
 
     @Override
-    public TableData parse(String file) {
+    public TableData parse(String file, FileFormat fileFormat) {
         TableData tableData = new TableData();
         List<List<String>> rows = new ArrayList<>();
         Set<String> keys = new HashSet<>();

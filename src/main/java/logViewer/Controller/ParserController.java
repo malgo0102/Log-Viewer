@@ -58,16 +58,16 @@ public class ParserController {
                 if (!fileFormat.getHeaders().isEmpty()) {
 
                 }
-                List<String> headers = fileFormat.getHeaders();
-                String regex = fileFormat.getRegex(); // delimiter
-                //parser = new CsvParser(new fileFormat(headers));
+                //List<String> headers = fileFormat.getHeaders();
+                //String regex = fileFormat.getRegex(); // delimiter
+                parser = new CsvParser();
             } else {
                 // if (fileType == json):
                 parser = new JsonParser();
             }
 
             String file = (String) request.getSession().getAttribute("file");
-            tableData = parser.parse(file);
+            tableData = parser.parse(file, fileFormat);
 
             List<List<String>> rows = tableData.getRows();
             List<String> headers = tableData.getHeaders();

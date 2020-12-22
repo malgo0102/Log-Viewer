@@ -1,5 +1,6 @@
 package logViewer.Parser;
 
+import logViewer.Model.FileFormat;
 import logViewer.Model.TableData;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -10,7 +11,7 @@ import java.io.InputStreamReader;
 
 public abstract class Parser {
 
-    public abstract TableData parse(String file);
+    public abstract TableData parse(String file, FileFormat fileFormat);
 
     public String readFile(MultipartFile multipartFile) throws Exception {
         try {
