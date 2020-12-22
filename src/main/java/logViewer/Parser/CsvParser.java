@@ -1,5 +1,6 @@
 package logViewer.Parser;
 
+import logViewer.Model.FileFormat;
 import logViewer.Model.TableData;
 
 import java.util.ArrayList;
@@ -8,6 +9,12 @@ import java.util.List;
 
 
 public class CsvParser extends Parser{
+
+  FileFormat fileFormat;
+
+  public CsvParser(FileFormat fileFormat) {
+    this.fileFormat = fileFormat;
+  }
 
   @Override
   public TableData parse(String file){

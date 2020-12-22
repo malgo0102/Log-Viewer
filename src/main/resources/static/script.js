@@ -46,7 +46,7 @@ settings.on('change', function() {
         });
 });
 
-// add new setting form: disables delimiter if user selects json as file type
+// add new setting form: disables delimiter input field if user selects json as file type
 $("#fileType").on('change', function() {
     $("#regex").prop('disabled', this.value === "JSON")
 });

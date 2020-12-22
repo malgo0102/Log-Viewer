@@ -3,6 +3,7 @@ package logViewer.Controller;
 import logViewer.Model.FileFormat;
 import logViewer.Model.TableData;
 import logViewer.Parser.CsvParser;
+import logViewer.Parser.JsonParser;
 import logViewer.Parser.Parser;
 
 import logViewer.Repository.FileFormatRepository;
@@ -25,16 +26,8 @@ public class ParserController {
         this.fileFormatRepo = fileFormatRepo;
     }
 
-    @GetMapping("/table/setting/{id}")
-    public String showTable(@PathVariable("id") int id, HttpServletRequest request, Model model) {
-        // Fetch selected setting from db
-        FileFormat fileFormat = fileFormatRepo.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid file format id: " + id));
-        // Check file type
-        // if csv:
-        // check if there are custom headers or not and if yes pass them to be displayed in table
-        // pass regex to be used in parsing method;
-
+    @GetMapping("/table")
+    public String showTable(HttpServletRequest request, Model model) {
         tableData = (TableData) request.getSession().getAttribute("tableData");
         if (tableData == null) {
             //model.addAttribute("message", "Please select a file to upload!");
@@ -52,21 +45,30 @@ public class ParserController {
         return "table";
     }
 
-    @PostMapping("/table/setting/{id}")
+    @GetMapping("/table/setting/{id}")
     public String parseFile(@PathVariable("id") int id, HttpServletRequest request, Model model) {
         try {
-            //FileFormat fileFormat = (FileFormat) request.getSession().getAttribute("fileFormat");
-            //String fileType = fileFormat.getFileType()
-            //if (fileType == CSV):
-                //fileFormat.getHeaders()
-                //fileFormat.getRegex() // delimiter
-            Parser parser = new CsvParser();
-            // if (fileType == json):
-            // Parser parser = new JsonParser();
+            // Fetch selected setting from db
+            FileFormat fileFormat = fileFormatRepo.findById(id)
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid file format id: " + id));
+            // Check file type
+            Parser parser;
+            if (fileFormat.getFileType().equals("CSV")) {
+                // Check if setting has custom headers
+                if (!fileFormat.getHeaders().isEmpty()) {
 
+                }
+                List<String> headers = fileFormat.getHeaders();
+                String regex = fileFormat.getRegex(); // delimiter
+                //parser = new CsvParser(new fileFormat(headers));
+            } else {
+                // if (fileType == json):
+                parser = new JsonParser();
+            }
 
             String file = (String) request.getSession().getAttribute("file");
             tableData = parser.parse(file);
+
             List<List<String>> rows = tableData.getRows();
             List<String> headers = tableData.getHeaders();
 
