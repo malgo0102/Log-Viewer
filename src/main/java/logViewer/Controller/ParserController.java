@@ -67,6 +67,8 @@ public class ParserController {
             String file = (String) request.getSession().getAttribute("file");
             tableData = parser.parse(file, fileFormat);
 
+            request.getSession().setAttribute("tableData", tableData);
+
             List<List<String>> rows = tableData.getRows();
             List<String> headers = tableData.getHeaders();
 
