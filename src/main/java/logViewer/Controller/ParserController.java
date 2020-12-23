@@ -2,6 +2,7 @@ package logViewer.Controller;
 
 import logViewer.Model.FileFormat;
 import logViewer.Model.TableData;
+import logViewer.Model.Search;
 import logViewer.Parser.CsvParser;
 import logViewer.Parser.JsonParser;
 import logViewer.Parser.Parser;
@@ -85,21 +86,33 @@ public class ParserController {
         return "table";
     }
 
-    @RequestMapping(value = "/table")
-    public String search(@RequestParam("search") String search, HttpServletRequest request, Model model) {
-        TableData tableData = (TableData) request.getSession().getAttribute("tableData");
+    @GetMapping(value = "/search")
+    public String search(@ModelAttribute("search") Search search, Model model) {
         List<List<String>> rows = tableData.getRows();
         List<String> headers = tableData.getHeaders();
         List<List<String>> filteredRows = new ArrayList<>();
 
+
         for (List row : rows) {
-            if (row.contains(search)) {
+            if (row.contains(search.getSearch())) {
                 filteredRows.add(row);
             }
         }
 
+        model.addAttribute("clearSearch", true);
         model.addAttribute("headers", headers);
         model.addAttribute("rows", filteredRows);
+
+        return "table";
+    }
+
+    @GetMapping("/clearSearch")
+    private String clearSearch(Model model) {
+        List<List<String>> rows = tableData.getRows();
+        List<String> headers = tableData.getHeaders();
+
+        model.addAttribute("headers", headers);
+        model.addAttribute("rows", rows);
 
         return "table";
     }
