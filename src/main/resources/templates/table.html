@@ -23,6 +23,8 @@
                 <h1 class="display-4"> Not found </h1>
             </div>
 
+            <!-- Display list of events -->
+            <div th:unless="${#lists.isEmpty(rows)}">
             <!-- Display functionality buttons -->
             <p>Statistics:</p>
 
@@ -114,8 +116,7 @@
                 </form>
             </div>
 
-            <!-- Display list of events -->
-            <div th:unless="${#lists.isEmpty(rows)}">
+
                 <table class="table table-sm table-bordered">
                     <thead>
                     <tr>
