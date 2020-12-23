@@ -99,6 +99,7 @@ public class ParserController {
             }
         }
 
+        model.addAttribute("showSearch", true);
         model.addAttribute("clearSearch", true);
         model.addAttribute("headers", headers);
         model.addAttribute("rows", filteredRows);
