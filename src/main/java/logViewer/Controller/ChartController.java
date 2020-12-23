@@ -38,9 +38,12 @@ public class ChartController {
 
     @GetMapping("/chart")
     public String showChart(HttpServletRequest request, Model model,
-                            @ModelAttribute("chart") ChartAxies chart) {
+                            @ModelAttribute("chart") ChartAxies chart,
+                            @PathVariable("id") String id) {
+
         TableData tableData = (TableData) request.getSession().getAttribute("tableData");
 
+        System.out.print(id);
         List<String> xAxis = new ArrayList<>();
         List<Float> yAxis = new ArrayList<>();
 
