@@ -8,12 +8,37 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 @Controller
 public class ChartController {
+    @GetMapping ("/chartForm")
+    public String chooseAxis(HttpServletRequest request, Model model){
+        TableData tableData = (TableData) request.getSession().getAttribute("tableData");
+
+        List<List<String>> rows = tableData.getRows();
+        List<String> headersX = tableData.getHeaders();
+        List<String> headersY = new ArrayList<>();
+
+        List row = rows.get(0);
+
+        for(int i=0; i < row.size(); i++) {
+            try {
+                Float.parseFloat((String) row.get(i));
+                headersY.add(headersX.get(i));
+            } catch (NumberFormatException ex) {}
+        }
+
+        model.addAttribute("headersX", headersX);
+        model.addAttribute("headersY", headersY);
+
+        return "chart-form";
+    }
+
     @GetMapping("/chart")
-    public String showChart(HttpServletRequest request, Model model, @ModelAttribute("chart") ChartAxies chart) {
+    public String showChart(HttpServletRequest request, Model model,
+                            @ModelAttribute("chart") ChartAxies chart) {
         TableData tableData = (TableData) request.getSession().getAttribute("tableData");
 
         List<String> xAxis = new ArrayList<>();
