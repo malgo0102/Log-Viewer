@@ -7,8 +7,6 @@ $("#generate").click(function() {
                     y: urlY
                 }
 
-
-                alert($.param(obj));
                 window.location = "/chart?" + $.param(obj);
             }
 });

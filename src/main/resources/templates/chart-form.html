@@ -17,7 +17,6 @@
                     <h2>Choose chart axis:</h2>
                     <form>
                         <div class="form-group">
-                            <!-- populates drop-down list from db -->
                             <label for="chooseX">Choose X axis</label>
                             <select th:field="*{headersX}" class="form-control" id="chooseX">
                                 <option value="0">All</option>
@@ -37,7 +36,7 @@
                                 </option>
                             </select>
                         </div>
-                        <a th:href="@{/chart}" class="btn btn-outline-primary" role="button" id="generate">Generate chart</a>
+                        <a class="btn btn-outline-primary" role="button" id="generate">Generate chart</a>
                     </form>
                 </div>
             </div>
