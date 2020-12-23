@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log Viewer - File Format</title>
+    <link th:replace="fragments :: bootstrap_head">
+</head>
+<body>
+<div class="d-flex flex-column sticky-footer-wrapper">
+    <div th:replace="fragments :: navbar"></div>
+    <main class="flex-fill">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2>Choose chart axis:</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="chooseX">Choose X axis</label>
+                            <select th:field="*{headersX}" class="form-control" id="chooseX">
+                                <option value="0">All</option>
+                                <option th:each="header: ${headersX}"
+                                        th:value="${header}"
+                                        th:text="${header}"
+                                        th:selected="${header}">
+                                </option>
+                            </select>
+                            <label for="chooseY">Choose Y axis</label>
+                            <select th:field="*{headersY}" class="form-control" id="chooseY">
+                                <option value="1">All</option>
+                                <option th:each="header: ${headersY}"
+                                        th:value="${header}"
+                                        th:text="${header}"
+                                        th:selected="${header}">
+                                </option>
+                            </select>
+                        </div>
+                        <a class="btn btn-outline-primary" role="button" id="generate">Generate chart</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:replace="fragments :: footer"></div>
+</div>
+<div th:replace="fragments :: bootstrap_body"></div>
+</body>
+</html>
