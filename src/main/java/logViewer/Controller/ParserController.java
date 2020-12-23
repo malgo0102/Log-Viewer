@@ -111,6 +111,7 @@ public class ParserController {
         List<List<String>> rows = tableData.getRows();
         List<String> headers = tableData.getHeaders();
 
+        model.addAttribute("showSearch", true);
         model.addAttribute("headers", headers);
         model.addAttribute("rows", rows);
 
