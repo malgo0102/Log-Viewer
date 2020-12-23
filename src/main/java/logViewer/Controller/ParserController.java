@@ -1,9 +1,12 @@
 package logViewer.Controller;
 
+import logViewer.Model.FileFormat;
 import logViewer.Model.TableData;
 import logViewer.Parser.CsvParser;
+import logViewer.Parser.JsonParser;
 import logViewer.Parser.Parser;
 
+import logViewer.Repository.FileFormatRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +20,11 @@ import java.util.List;
 public class ParserController {
 
     TableData tableData;
+    FileFormatRepository fileFormatRepo;
+
+    public ParserController(FileFormatRepository fileFormatRepo) {
+        this.fileFormatRepo = fileFormatRepo;
+    }
 
     @GetMapping("/table")
     public String showTable(HttpServletRequest request, Model model) {
