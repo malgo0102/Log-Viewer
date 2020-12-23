@@ -1,5 +1,6 @@
 package logViewer.Parser;
 
+import logViewer.Model.FileFormat;
 import logViewer.Model.TableData;
 
 import java.util.ArrayList;
