@@ -21,6 +21,7 @@ public class ParserController {
 
     TableData tableData;
     FileFormatRepository fileFormatRepo;
+    CsvParser csvParser;
 
     public ParserController(FileFormatRepository fileFormatRepo) {
         this.fileFormatRepo = fileFormatRepo;
@@ -55,16 +56,14 @@ public class ParserController {
             Parser parser;
             if (fileFormat.getFileType().equals("CSV")) {
                 // Check if setting has custom headers
-                if (!fileFormat.getHeaders().isEmpty()) {
-
-                }
-                //List<String> headers = fileFormat.getHeaders();
-                //String regex = fileFormat.getRegex(); // delimiter
+               //if (!fileFormat.getHeaders().isEmpty()) {
+                //}
                 parser = new CsvParser();
             } else {
-                // if (fileType == json):
                 parser = new JsonParser();
             }
+
+
 
             String file = (String) request.getSession().getAttribute("file");
             tableData = parser.parse(file, fileFormat);

@@ -27,7 +27,7 @@ public abstract class Parser {
             }
             return file;
         } catch (Exception e) {
-            throw new Exception("An error occurred while processing the CSV file.");
+            throw new Exception("An error occurred while processing the file.");
         }
     }
 
