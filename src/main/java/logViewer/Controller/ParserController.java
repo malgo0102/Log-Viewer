@@ -35,28 +35,16 @@ public class ParserController {
 
             return "table";
         }
+//
+//        List<List<String>> rows = tableData.getRows();
+//        List<String> headers = tableData.getHeaders();
+//
+//        model.addAttribute("showSearch", true);
+//        model.addAttribute("error", false);
+//        model.addAttribute("headers", headers);
+//        model.addAttribute("rows", rows);
 
-        List<List<String>> rows = tableData.getRows();
-        List<String> headers = tableData.getHeaders();
-
-
-        //Integer min = tableData.getMin(column);
-        //System.out.println(min);
-
-
-        //a,b,c,d,e;
-        //f,g,h,i,m;
-
-        //List<List<String>> rows = tableData.getRows();
-        //List<String> headers = tableData.getHeaders();
-        //model.addAttribute("min", min);
-
-        model.addAttribute("showSearch", true);
-        model.addAttribute("error", false);
-        model.addAttribute("headers", headers);
-        model.addAttribute("rows", rows);
-
-        return "table";
+        return "redirect:/table";
     }
 
     @GetMapping("/table/setting/{id}")
@@ -76,36 +64,16 @@ public class ParserController {
                 parser = new JsonParser();
             }
 
-
-
             String file = (String) request.getSession().getAttribute("file");
             tableData = parser.parse(file, fileFormat);
 
             List<List<String>> rows = tableData.getRows();
             List<String> headers = tableData.getHeaders();
 
-
-
-            List<String> columnString = new ArrayList<>();
-            List<Float> column = new ArrayList<>();
-            // List<List<String>> columns = new ArrayList<>();
-            columnString = tableData.rowsToColumns(rows).get(5);
-            try {
-                column = tableData.stringToFloatColumn(columnString);
-            } catch (Exception ex) { }
-
-            Float min = tableData.getMin(column);
-            Float max = tableData.getMax(column);
-
-            System.out.println(min);
-            System.out.println(max);
-
             model.addAttribute("showSearch", true);
             model.addAttribute("error", false);
             model.addAttribute("headers", headers);
             model.addAttribute("rows", rows);
-            model.addAttribute("min", min.toString());
-            model.addAttribute("max", max.toString());
 
         } catch (Exception ex) {
             model.addAttribute("error", true);

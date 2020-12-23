@@ -2,6 +2,7 @@ package logViewer.Model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -60,27 +61,24 @@ public class TableData {
         return columns;
     }
 
-    public List<Float> stringToFloatColumn(List<String> column) {
-        List<Float> columnFloat = new ArrayList<>();
+    public List<Double> stringToFloatColumn(List<String> column) {
+        List<Double> columnDouble = new ArrayList<>();
         for(String value : column) {
-            columnFloat.add(Float.parseFloat(value));
+            columnDouble.add(Double.parseDouble(value));
         }
 
-        return columnFloat;
+        return columnDouble;
     }
 
-    public Float getMax(List<Float> column) {
-        if (column == null || column.size() == 0)
-            return Float.MIN_VALUE;
-
-        return Collections.max(column);
+    public double getMax(List<Double> column) {
+        double max = column.stream().max(Comparator.comparing(Double::valueOf)).get();
+        return max;
     }
 
-    public Float getMin(List<Float> column) {
-        if (column == null || column.size() == 0)
-            return Float.MAX_VALUE;
+    public double getMin(List<Double> column) {
+        double min = column.stream().min(Comparator.comparing(Double::valueOf)).get();
 
-        return Collections.min(column);
+        return min;
     }
 
 }

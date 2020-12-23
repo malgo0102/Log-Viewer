@@ -31,25 +31,25 @@
                 Min & Max
             </button>
             <!-- Modal -->
-            <div class="modal fade" id="minMaxModal" tabindex="-1" role="dialog" aria-labelledby="minMaxModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="minMaxModalLabel">Min & Max</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p th:utext="${min}"></p>
-                            <p th:utext="${max}"></p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="modal fade" id="minMaxModal" tabindex="-1" role="dialog" aria-labelledby="minMaxModalLabel" aria-hidden="true">-->
+<!--                <div class="modal-dialog" role="document">-->
+<!--                    <div class="modal-content">-->
+<!--                        <div class="modal-header">-->
+<!--                            <h5 class="modal-title" id="minMaxModalLabel">Min & Max</h5>-->
+<!--                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                                <span aria-hidden="true">&times;</span>-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                        <div class="modal-body">-->
+<!--                            <p th:utext="${min}"></p>-->
+<!--                            <p th:utext="${max}"></p>-->
+<!--                        </div>-->
+<!--                        <div class="modal-footer">-->
+<!--                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#deviationModal">
@@ -105,8 +105,6 @@
                 </div>
             </div>
 
-            <!-- Display list of events -->
-
             <div class="form-group">
                 <h3>Choose chart X and Y axis</h3>
                 <form th:action="@{/chart}"  method="GET"  modelAttribute="chart">
@@ -116,6 +114,7 @@
                 </form>
             </div>
 
+            <!-- Display list of events -->
             <div th:unless="${#lists.isEmpty(rows)}">
                 <table class="table table-sm table-bordered">
                     <thead>
