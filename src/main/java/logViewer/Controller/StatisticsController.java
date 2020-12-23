@@ -33,12 +33,12 @@ public class StatisticsController {
         tableData = (TableData) request.getSession().getAttribute("tableData");
 
         List<List<String>> rows = tableData.getRows();
-        List<String> columnString = tableData.rowsToColumns(rows).get(1);
+        List<String> columnString = tableData.rowsToColumns(rows).get(5);
         List<Double> column = new ArrayList<>();
         List<List<String>> columns = new ArrayList<>();
 
         try {
-            column = tableData.stringToFloatColumn(columnString);
+            column = tableData.stringToDoubleColumn(columnString);
         } catch (Exception ex) { }
 
         double min = tableData.getMin(column); //double min = 5.1; //

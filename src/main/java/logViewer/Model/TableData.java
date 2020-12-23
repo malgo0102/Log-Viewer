@@ -61,7 +61,7 @@ public class TableData {
         return columns;
     }
 
-    public List<Double> stringToFloatColumn(List<String> column) {
+    public List<Double> stringToDoubleColumn(List<String> column) {
         List<Double> columnDouble = new ArrayList<>();
         for(String value : column) {
             columnDouble.add(Double.parseDouble(value));
