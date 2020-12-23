@@ -1,7 +1,6 @@
 package logViewer.Controller;
 
 import logViewer.Model.TableData;
-import logViewer.Model.ChartAxies;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +36,6 @@ public class ChartController {
 
     @GetMapping("/chart")
     public String showChart(HttpServletRequest request, Model model,
-                            @ModelAttribute("chart") ChartAxies chart,
                             @RequestParam(value = "x") String x, @RequestParam(value = "y") String y ) {
 
         TableData tableData = (TableData) request.getSession().getAttribute("tableData");
@@ -70,7 +68,7 @@ public class ChartController {
 
                 for (int k = 2; k < 20; k++) {
                     try {
-                        model.addAttribute("hY", chart.getY());
+                        model.addAttribute("hY", y);
                         Float.parseFloat(rows.get(k).get(i));
                         yAxis.add(Float.valueOf(rows.get(k).get(i)));
                     } catch (NumberFormatException ex) {}
