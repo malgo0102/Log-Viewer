@@ -22,22 +22,32 @@ public class ChartController {
         List<List<String>> rows = tableData.getRows();
         List<String> headers = tableData.getHeaders();
 
-        for(int i = 0; i < headers.size(); i++) {
+        for (int i = 0; i < headers.size(); i++) {
             if (headers.get(i).contains(chart.getX())) {
-                for(int j = 2; j < 20; j++) {
+                for (int j = 2; j < 20; j++) {
                     model.addAttribute("hX", chart.getX());
                     xAxis.add(rows.get(j).get(i));
                 }
             }
 
-            if(headers.get(i).contains(chart.getY())) {
-                for(int k = 2; k < 20; k++) {
+            if (headers.get(i).contains(chart.getY())) {
+                if (rows.size() < 20) {
+                    for (int k = 2; k < rows.size(); k++) {
+                        try {
+                            model.addAttribute("hY", chart.getY());
+                            Float.parseFloat(rows.get(k).get(i));
+                            yAxis.add(Float.valueOf(rows.get(k).get(i)));
+                        } catch (NumberFormatException ex) {
+                        }
+                    }
+                }
+
+                for (int k = 2; k < 20; k++) {
                     try {
                         model.addAttribute("hY", chart.getY());
                         Float.parseFloat(rows.get(k).get(i));
                         yAxis.add(Float.valueOf(rows.get(k).get(i)));
-                    } catch (NumberFormatException ex) {
-                    }
+                    } catch (NumberFormatException ex) {}
                 }
             }
         }
