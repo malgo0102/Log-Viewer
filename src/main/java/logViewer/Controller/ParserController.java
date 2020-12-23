@@ -2,7 +2,6 @@ package logViewer.Controller;
 
 import logViewer.Model.TableData;
 import logViewer.Parser.CsvParser;
-import logViewer.Parser.JsonParser;
 import logViewer.Parser.Parser;
 
 import org.springframework.stereotype.Controller;
@@ -52,22 +51,27 @@ public class ParserController {
         return "table";
     }
 
-    @PostMapping("/table")
-    public String parseFile(HttpServletRequest request, Model model) {
+    @GetMapping("/table/setting/{id}")
+    public String parseFile(@PathVariable("id") int id, HttpServletRequest request, Model model) {
         try {
-            //FileFormat fileFormat = (FileFormat) request.getSession().getAttribute("fileFormat");
-            //String fileType = fileFormat.getFileType()
-            //if (fileType == csv):
-                //fileFormat.getHeaders()
-                //fileFormat.getRegex() // delimiter
-            Parser parser = new CsvParser();
-            // if (fileType == json):
-            // Parser parser = new JsonParser();
+            // Fetch selected setting from db
+            FileFormat fileFormat = fileFormatRepo.findById(id)
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid file format id: " + id));
+            // Check file type
+            Parser parser;
+            if (fileFormat.getFileType().equals("CSV")) {
+                // Check if setting has custom headers
+               //if (!fileFormat.getHeaders().isEmpty()) {
+                //}
+                parser = new CsvParser();
+            } else {
+                parser = new JsonParser();
+            }
+
 
 
             String file = (String) request.getSession().getAttribute("file");
-            tableData = parser.parse(file);
-            request.getSession().setAttribute("tableData", tableData);
+            tableData = parser.parse(file, fileFormat);
 
             List<List<String>> rows = tableData.getRows();
             List<String> headers = tableData.getHeaders();

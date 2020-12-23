@@ -21,6 +21,10 @@ public class FileFormat {
     public FileFormat() {
     }
 
+    public FileFormat(List<String> headers) {
+        this.headers = headers;
+    }
+
     public int getId() {
         return id;
     }

@@ -74,7 +74,7 @@ public class FileFormatController {
 
     // Updates db after a setting is edited
     @PostMapping("/file_format/update/{id}")
-    public String updateSetting(@PathVariable("id") int id, @ModelAttribute("fileFormat") FileFormat fileFormat, Model model) {
+    public String updateSetting(@ModelAttribute("fileFormat") FileFormat fileFormat, Model model) {
         fileFormatRepo.save(fileFormat);
 
         model.addAttribute("fileFormats", fileFormatRepo.findAll());

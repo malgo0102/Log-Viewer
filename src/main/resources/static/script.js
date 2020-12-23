@@ -14,10 +14,9 @@ $("#deleteBtn").click(function () {
     }
 });*/
 
+const settings = $("#settings");
 
-// it's working but could use some re-factoring to clear the warnings
-
-$("#settings").on('change', function() {
+settings.on('change', function() {
     $("#editBtn").prop('disabled', this.value === '0')
         .click(function() {
             const url = $("#settings").val();
@@ -27,7 +26,7 @@ $("#settings").on('change', function() {
         });
 });
 
-$("#settings").on('change', function() {
+settings.on('change', function() {
     $("#deleteBtn").prop('disabled', this.value === '0')
         .click(function() {
             const url = $("#settings").val();
@@ -37,7 +36,20 @@ $("#settings").on('change', function() {
         });
 });
 
+settings.on('change', function() {
+    $("#parseBtn").prop('disabled', this.value === '0')
+        .click(function() {
+            const url = $("#settings").val();
+            if (url !== ""){
+                window.location = "/table/setting/" + url;
+            }
+        });
+});
 
+// add new setting form: disables delimiter input field if user selects json as file type
+$("#fileType").on('change', function() {
+    $("#regex").prop('disabled', this.value === "JSON")
+});
 
 
 
