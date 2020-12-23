@@ -21,16 +21,16 @@
 <!--                    <span th:text="${message}"></span>-->
 <!--                </div>-->
                 <!-- Select column number -->
-                <div class="form-group">
-                    <h3>Choose column for calculating min, max and standard deviation:</h3>
-                    <form th:action="@{/statistics}"  method="GET"  modelAttribute="statistics">
-                        <input name="column" placeholder="Type column number...">
-                        <button type="submit" class="btn btn-outline-secondary">Calculate</button>
-                    </form>
-                </div>
+<!--                <div class="form-group">-->
+<!--                    <h3>Choose column for calculating min, max and standard deviation:</h3>-->
+<!--                    <form th:action="@{/statistics}"  method="GET"  modelAttribute="statistics">-->
+<!--                        <input name="column" placeholder="Type column number...">-->
+<!--                        <button type="submit" class="btn btn-outline-secondary">Calculate</button>-->
+<!--                    </form>-->
+<!--                </div>-->
                 <!-- Show statistics  -->
-                <p th:utext="'Min: '${min}"></p>
-                <p th:utext="'Max: '${max}"></p>
+                <p th:utext="${'Min: ' + min}"></p>
+                <p th:utext="${'Max: ' + max}"></p>
             </div>
         </div>
     </main>

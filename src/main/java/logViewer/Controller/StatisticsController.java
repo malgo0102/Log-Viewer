@@ -17,23 +17,18 @@ public class StatisticsController {
     TableData tableData;
 
     @GetMapping("/statistics")
-    public String getStatistics (HttpServletRequest request) {
+    public String showStatistics (HttpServletRequest request, Model model) {
         tableData = (TableData) request.getSession().getAttribute("tableData");
-        if (tableData == null) {
-            //model.addAttribute("message", "Please select a file to upload!");
+//        if (tableData == null) {
+//            //model.addAttribute("message", "Please select a file to upload!");
+//
+//            return "statistics";
+//        }
 
-            return "statistics";
-        }
-        return "redirect:/statistics";
-    }
-
-    @PostMapping("/statistics")
-    public String calculate (HttpServletRequest request, Model model) {
-
-        tableData = (TableData) request.getSession().getAttribute("tableData");
+//        tableData = (TableData) request.getSession().getAttribute("tableData");
 
         List<List<String>> rows = tableData.getRows();
-        List<String> columnString = tableData.rowsToColumns(rows).get(5);
+        List<String> columnString = tableData.rowsToColumns(rows).get(1);
         List<Double> column = new ArrayList<>();
         List<List<String>> columns = new ArrayList<>();
 
@@ -52,4 +47,30 @@ public class StatisticsController {
 
         return "statistics";
     }
+
+//    @PostMapping("/statistics")
+//    public String calculate (HttpServletRequest request, Model model) {
+//
+//        tableData = (TableData) request.getSession().getAttribute("tableData");
+//
+//        List<List<String>> rows = tableData.getRows();
+//        List<String> columnString = tableData.rowsToColumns(rows).get(5);
+//        List<Double> column = new ArrayList<>();
+//        List<List<String>> columns = new ArrayList<>();
+//
+//        try {
+//            column = tableData.stringToDoubleColumn(columnString);
+//        } catch (Exception ex) { }
+//
+//        double min = tableData.getMin(column); //double min = 5.1; //
+//        double max = tableData.getMax(column); //double max = 6.1; //
+//
+//        System.out.println(min);
+//        System.out.println(max);
+//
+//        model.addAttribute("min", min);
+//        model.addAttribute("max", max);
+//
+//        return "statistics";
+//    }
 }

@@ -36,15 +36,15 @@ public class ParserController {
             return "table";
         }
 
-//        List<List<String>> rows = tableData.getRows();
-//        List<String> headers = tableData.getHeaders();
-//
-//        model.addAttribute("showSearch", true);
-//        model.addAttribute("error", false);
-//        model.addAttribute("headers", headers);
-//        model.addAttribute("rows", rows);
+        List<List<String>> rows = tableData.getRows();
+        List<String> headers = tableData.getHeaders();
 
-        return "redirect:/table";
+        model.addAttribute("showSearch", true);
+        model.addAttribute("error", false);
+        model.addAttribute("headers", headers);
+        model.addAttribute("rows", rows);
+
+        return "table";
     }
 
     @GetMapping("/table/setting/{id}")
