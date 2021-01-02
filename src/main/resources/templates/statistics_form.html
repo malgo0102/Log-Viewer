@@ -13,25 +13,22 @@
     <main class="flex-fill">
         <div class="container">
             <div class="jumbotron">
-                <div class="row">
-                    <div class="col">
-                        <h2>Statistics</h2>
-                        <form>
-                            <div class="form-group">
-                                <label for="selectColHeader">Choose a column to analyze:</label>
-                                <select th:field="*{headers}" class="form-control" id="selectColHeader">
-                                    <option value="0">All</option>
-                                    <option th:each="header: ${headers}"
-                                            th:value="${header}"
-                                            th:text="${header}"
-                                            th:selected="${header}">
-                                    </option>
-                                </select>
-                            </div>
-                            <a class="btn btn-outline-primary" role="button" id="showStatistics">Show statistics</a>
-                           </form>
+                <h1 class="display-4">Statistics</h1>
+                <hr>
+                <form>
+                    <div class="form-group">
+                        <label for="selectColHeader">Choose a column to analyze:</label>
+                        <select th:field="*{headers}" class="form-control" id="selectColHeader">
+                            <option value="0">All</option>
+                            <option th:each="header: ${headers}"
+                                    th:value="${header}"
+                                    th:text="${header}"
+                                    th:selected="${header}">
+                            </option>
+                        </select>
                     </div>
-                </div>
+                    <a class="btn btn-outline-primary" role="button" id="showStatistics">Show statistics</a>
+                   </form>
             </div>
         </div>
     </main>

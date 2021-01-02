@@ -54,9 +54,7 @@ public class StatisticsController {
         double min = tableData.getMin(column); //double min = 5.1; //
         double max = tableData.getMax(column); //double max = 6.1; //
 
-        System.out.println(min);
-        System.out.println(max);
-
+        model.addAttribute("selectedHeader", selectedHeader);
         model.addAttribute("min", min);
         model.addAttribute("max", max);
 
