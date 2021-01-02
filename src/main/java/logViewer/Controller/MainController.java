@@ -30,7 +30,6 @@ public class MainController {
                 String file = parser.readFile(multipartFile);
                 // https://stackoverflow.com/questions/18791645/how-to-use-session-attributes-in-spring-mvc
                 request.getSession().setAttribute("file", file);
-                // m.addAttribute("file", file);
             } catch (Exception e) {
                 m.addAttribute("error", true);
                 m.addAttribute("message", "Error occurred: " + e.getMessage());
