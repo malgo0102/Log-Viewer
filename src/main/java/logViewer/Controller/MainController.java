@@ -45,4 +45,9 @@ public class MainController {
     @GetMapping("/contact")
     public String showContact() { return "contact"; }
 
+    @GetMapping("/error")
+    public String showError(){
+        return "error";
+    }
+
 }
