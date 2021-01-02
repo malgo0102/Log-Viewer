@@ -55,7 +55,6 @@ public class TableData {
                 columns.get(i).add(row.get(i).toString());
             }
         }
-        //System.out.println(columns.get(0));
 
         return columns;
     }

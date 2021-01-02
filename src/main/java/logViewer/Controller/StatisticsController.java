@@ -19,6 +19,7 @@ public class StatisticsController {
     @GetMapping ("/statistics_form")
     public String selectColumn(HttpServletRequest request, Model model){
         tableData = (TableData) request.getSession().getAttribute("tableData");
+
         List<String> headers = tableData.getHeaders();
 
         model.addAttribute("headers", headers);
@@ -27,13 +28,11 @@ public class StatisticsController {
     }
 
     @GetMapping("/statistics")
-    public String showStatistics (HttpServletRequest request, Model model, @RequestParam(value = "selectedHeader") String selectedHeader) {
+    public String showStatistics (HttpServletRequest request,
+                                  Model model,
+                                  @RequestParam(value = "selectedHeader") String selectedHeader) {
+
         tableData = (TableData) request.getSession().getAttribute("tableData");
-//        if (tableData == null) {
-//            //model.addAttribute("message", "Please select a file to upload!");
-//
-//            return "statistics";
-//        }
 
         List<List<String>> rows = tableData.getRows();
         List<String> headers = tableData.getHeaders();
@@ -45,14 +44,12 @@ public class StatisticsController {
         }
 
         List<Double> column = new ArrayList<>();
-        List<List<String>> columns = new ArrayList<>();
-
         try {
             column = tableData.stringToDoubleColumn(columnString);
         } catch (Exception ex) { }
 
-        double min = tableData.getMin(column); //double min = 5.1; //
-        double max = tableData.getMax(column); //double max = 6.1; //
+        double min = tableData.getMin(column);
+        double max = tableData.getMax(column);
 
         model.addAttribute("selectedHeader", selectedHeader);
         model.addAttribute("min", min);
@@ -60,30 +57,4 @@ public class StatisticsController {
 
         return "statistics";
     }
-
-//    @PostMapping("/statistics")
-//    public String calculate (HttpServletRequest request, Model model) {
-//
-//        tableData = (TableData) request.getSession().getAttribute("tableData");
-//
-//        List<List<String>> rows = tableData.getRows();
-//        List<String> columnString = tableData.rowsToColumns(rows).get(5);
-//        List<Double> column = new ArrayList<>();
-//        List<List<String>> columns = new ArrayList<>();
-//
-//        try {
-//            column = tableData.stringToDoubleColumn(columnString);
-//        } catch (Exception ex) { }
-//
-//        double min = tableData.getMin(column); //double min = 5.1; //
-//        double max = tableData.getMax(column); //double max = 6.1; //
-//
-//        System.out.println(min);
-//        System.out.println(max);
-//
-//        model.addAttribute("min", min);
-//        model.addAttribute("max", max);
-//
-//        return "statistics";
-//    }
 }
