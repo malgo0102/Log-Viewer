@@ -22,28 +22,11 @@ public class FileFormatController {
     // Fetch settings (file formats) from db and populate the form drop-down list
     @GetMapping("file_format")
     public String getAllSettings(Model model) {
-        //settings.forEach(System.out::println);
         model.addAttribute("fileFormats", fileFormatRepo.findAll());
-        return "file_format";
-    }
-
-    //  Apply file format to file contents
-    @PostMapping("/file_format")
-    public String applyFileFormat(@ModelAttribute("file_format") FileFormat fileFormat, HttpServletRequest request, Model m) {
-        // select fileFormat(setting):
-        // retrieve fileFormat name to know ID to apply from the settings list
-        // fileFormat.getId
-        // send fileFormat to @PostMapping "/table" parseFile(): FileFormat fileFormat = request.getSession().setAttribute("fileFormat");
-
-        // add fileFormat(setting):
-        // hide delimiter and headers form if file type chosen = json
-        // check if file contains column headers:
-            // 1. read first line and
-            // 2. ask user "Are these headers?" fileFormat.setHeaders()
-        // else apply column headers from the form - fileFormat.setHeaders()
 
         return "file_format";
     }
+
 
     @GetMapping("/file_format/add")
     public String getFileSettingForm(Model model) {
