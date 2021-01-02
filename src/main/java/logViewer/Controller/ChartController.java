@@ -31,7 +31,7 @@ public class ChartController {
         model.addAttribute("headersX", headersX);
         model.addAttribute("headersY", headersY);
 
-        return "chart-form";
+        return "chart_form";
     }
 
     @GetMapping("/chart")

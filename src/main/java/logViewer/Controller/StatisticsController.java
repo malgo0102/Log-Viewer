@@ -4,7 +4,7 @@ import logViewer.Model.TableData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -16,8 +16,18 @@ public class StatisticsController {
 
     TableData tableData;
 
+    @GetMapping ("/statistics_form")
+    public String selectColumn(HttpServletRequest request, Model model){
+        tableData = (TableData) request.getSession().getAttribute("tableData");
+        List<String> headers = tableData.getHeaders();
+
+        model.addAttribute("headers", headers);
+
+        return "statistics_form";
+    }
+
     @GetMapping("/statistics")
-    public String showStatistics (HttpServletRequest request, Model model) {
+    public String showStatistics (HttpServletRequest request, Model model, @RequestParam(value = "selectedHeader") String selectedHeader) {
         tableData = (TableData) request.getSession().getAttribute("tableData");
 //        if (tableData == null) {
 //            //model.addAttribute("message", "Please select a file to upload!");
@@ -25,10 +35,15 @@ public class StatisticsController {
 //            return "statistics";
 //        }
 
-//        tableData = (TableData) request.getSession().getAttribute("tableData");
-
         List<List<String>> rows = tableData.getRows();
-        List<String> columnString = tableData.rowsToColumns(rows).get(1);
+        List<String> headers = tableData.getHeaders();
+        List<String> columnString = new ArrayList<>();
+        for(int i = 0; i < headers.size(); i++ ){
+            if (headers.get(i).contains(selectedHeader)) {
+                columnString = tableData.rowsToColumns(rows).get(i);
+            }
+        }
+
         List<Double> column = new ArrayList<>();
         List<List<String>> columns = new ArrayList<>();
 
