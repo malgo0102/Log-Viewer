@@ -12,24 +12,25 @@
     <div th:replace="fragments :: navbar"></div>
     <main class="flex-fill">
         <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h2>Statistics</h2>
-                    <form>
-                        <div class="form-group">
-                            <label for="selectColHeader">Choose a column to analyze:</label>
-                            <select th:field="*{headers}" class="form-control" id="selectColHeader">
-                                <option value="0">All</option>
-                                <option th:each="header: ${headers}"
-                                        th:value="${header}"
-                                        th:text="${header}"
-                                        th:selected="${header}">
-                                </option>
-                            </select>
-                        </div>
-                        <a class="btn btn-outline-primary" role="button" id="showStatistics">Show statistics</a>
-<!--                        <a th:href="@{/statistics}" class="btn btn-outline-secondary" role="button">Show statistics</a>-->
-                    </form>
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col">
+                        <h2>Statistics</h2>
+                        <form>
+                            <div class="form-group">
+                                <label for="selectColHeader">Choose a column to analyze:</label>
+                                <select th:field="*{headers}" class="form-control" id="selectColHeader">
+                                    <option value="0">All</option>
+                                    <option th:each="header: ${headers}"
+                                            th:value="${header}"
+                                            th:text="${header}"
+                                            th:selected="${header}">
+                                    </option>
+                                </select>
+                            </div>
+                            <a class="btn btn-outline-primary" role="button" id="showStatistics">Show statistics</a>
+                           </form>
+                    </div>
                 </div>
             </div>
         </div>
