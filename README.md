@@ -20,7 +20,7 @@ Functionalities:
 Table wth log file data separated in events:
 | Header 1 | Header 2 | Header 3 | Header 4 |
 |----------|----------|----------|----------|
-| Event1   | Event2   | Event 3  | Event 3  |
+| Event1   | Event2   | Event 3  | Event 4  |
 
 
 
