@@ -17,9 +17,10 @@ public class StatisticsController {
     TableData tableData;
 
     @GetMapping ("/statistics_form")
-    public String selectColumn(HttpServletRequest request, Model model){
-        tableData = (TableData) request.getSession().getAttribute("tableData");
+    public String selectColumn(HttpServletRequest request,
+                               Model model){
 
+        tableData = (TableData) request.getSession().getAttribute("tableData");
         List<String> headers = tableData.getHeaders();
 
         model.addAttribute("headers", headers);

@@ -18,8 +18,7 @@ public class FileFormat {
     @ElementCollection
     private List<String> headers = new ArrayList<>();
 
-    public FileFormat() {
-    }
+    public FileFormat() { }
 
     public FileFormat(List<String> headers) {
         this.headers = headers;
@@ -63,17 +62,6 @@ public class FileFormat {
 
     public void setHeaders(List<String> headers) {
         this.headers = headers;
-    }
-
-    @Override
-    public String toString() {
-        return "FileFormat{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", fileType='" + fileType + '\'' +
-                ", regex='" + regex + '\'' +
-                ", headers=" + headers +
-                '}';
     }
 
 }

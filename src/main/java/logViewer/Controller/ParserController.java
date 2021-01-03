@@ -93,7 +93,6 @@ public class ParserController {
         List<String> headers = tableData.getHeaders();
         List<List<String>> filteredRows = new ArrayList<>();
 
-
         for (List row : rows) {
             if (row.contains(search.getSearch())) {
                 filteredRows.add(row);

@@ -34,13 +34,7 @@ public class CsvParser extends Parser {
         // Print all lines
         //rows.forEach(System.out::println);
 
-        //Populate headers if not included in selected setting
-        //for (int i = 0; i < row.size(); i++) {
-         //   headers.add("Header " + (i + 1));
-       // }
-
         tableData.setHeaders(fileFormat.getHeaders());
-        //tableData.setHeaders(headers);
         tableData.setRows(rows);
 
         return tableData;
