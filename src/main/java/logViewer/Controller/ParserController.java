@@ -58,9 +58,6 @@ public class ParserController {
             // Check file type
             Parser parser;
             if (fileFormat.getFileType().equals("CSV")) {
-                // Check if setting has custom headers
-               //if (!fileFormat.getHeaders().isEmpty()) {
-                //}
                 parser = new CsvParser();
             } else {
                 parser = new JsonParser();
