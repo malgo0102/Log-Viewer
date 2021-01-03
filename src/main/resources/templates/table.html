@@ -25,60 +25,6 @@
 
             <!-- Display list of events -->
             <div th:unless="${#lists.isEmpty(rows)}">
-            <!-- Display functionality buttons -->
-            <p>Statistics:</p>
-
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#minMaxModal">
-                Min & Max
-            </button>
-            <!-- Modal -->
-<!--            <div class="modal fade" id="minMaxModal" tabindex="-1" role="dialog" aria-labelledby="minMaxModalLabel" aria-hidden="true">-->
-<!--                <div class="modal-dialog" role="document">-->
-<!--                    <div class="modal-content">-->
-<!--                        <div class="modal-header">-->
-<!--                            <h5 class="modal-title" id="minMaxModalLabel">Min & Max</h5>-->
-<!--                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                                <span aria-hidden="true">&times;</span>-->
-<!--                            </button>-->
-<!--                        </div>-->
-<!--                        <div class="modal-body">-->
-<!--                            <p th:utext="${min}"></p>-->
-<!--                            <p th:utext="${max}"></p>-->
-<!--                        </div>-->
-<!--                        <div class="modal-footer">-->
-<!--                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#deviationModal">
-                Standard deviation
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="deviationModal" tabindex="-1" role="dialog" aria-labelledby="deviationModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deviationModalLabel">Standard deviation</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div id="minMax"></div>
-                            <!--                            <script type="text/javascript" th:src="@{/static/deviation.js}"></script>-->
-                            <!--                            <p th:text="'min = '${min}"></p>-->
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
                 <table class="table table-sm table-bordered">
                     <thead>
                     <tr>

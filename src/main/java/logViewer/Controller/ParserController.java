@@ -36,6 +36,7 @@ public class ParserController {
 
             return "table";
         }
+        System.out.println();
 
         List<List<String>> rows = tableData.getRows();
         List<String> headers = tableData.getHeaders();
