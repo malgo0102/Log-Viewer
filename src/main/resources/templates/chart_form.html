@@ -12,32 +12,34 @@
     <div th:replace="fragments :: navbar"></div>
     <main class="flex-fill">
         <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h2>Choose chart axis:</h2>
-                    <form>
-                        <div class="form-group">
-                            <label for="chooseX">Choose X axis</label>
-                            <select th:field="*{headersX}" class="form-control" id="chooseX">
-                                <option value="0">All</option>
-                                <option th:each="header: ${headersX}"
-                                        th:value="${header}"
-                                        th:text="${header}"
-                                        th:selected="${header}">
-                                </option>
-                            </select>
-                            <label for="chooseY">Choose Y axis</label>
-                            <select th:field="*{headersY}" class="form-control" id="chooseY">
-                                <option value="1">All</option>
-                                <option th:each="header: ${headersY}"
-                                        th:value="${header}"
-                                        th:text="${header}"
-                                        th:selected="${header}">
-                                </option>
-                            </select>
-                        </div>
-                        <a class="btn btn-outline-primary" role="button" id="generate">Generate chart</a>
-                    </form>
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="display-4">Chart</h1>
+                        <form>
+                            <div class="form-group">
+                                <label for="chooseX">Choose X axis</label>
+                                <select th:field="*{headersX}" class="form-control" id="chooseX">
+                                    <option value="0">All</option>
+                                    <option th:each="header: ${headersX}"
+                                            th:value="${header}"
+                                            th:text="${header}"
+                                            th:selected="${header}">
+                                    </option>
+                                </select>
+                                <label for="chooseY">Choose Y axis</label>
+                                <select th:field="*{headersY}" class="form-control" id="chooseY">
+                                    <option value="1">All</option>
+                                    <option th:each="header: ${headersY}"
+                                            th:value="${header}"
+                                            th:text="${header}"
+                                            th:selected="${header}">
+                                    </option>
+                                </select>
+                            </div>
+                            <a class="btn btn-outline-primary" role="button" id="generate">Generate chart</a>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
