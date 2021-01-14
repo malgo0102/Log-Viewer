@@ -1,0 +1,12 @@
+iris.json:
+Enter setting name: My JSON setting
+Choose file type: JSON
+Enter delimiter:
+Enter column headers:
+
+
+log.csv
+Enter setting name: My CSV setting
+Choose file type: CSV
+Enter delimiter: [ ,^-]+
+Enter column headers: IP address,Date,Request,URL,HTTP,Status
