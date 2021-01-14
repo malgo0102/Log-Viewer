@@ -28,8 +28,9 @@ Table wth log file data separated in events:
 
 1. Clone git repository by using `git clone <repository-url>`
 2. Open the application using your prefer IDE (ex: IntelliJ IDEA)
-3. Go to `application.properties` and add your database credentials (username, password)
-4. Run the project
-5. Open locahost:8080
-6. Upload file, select parsing format and parse the file
-7. Search, generate chart and see statistics
+3. Create MySQL database `log_viewer`
+4. Go to `application.properties` and add your database credentials (username, password)
+5. Run the project
+6. Open locahost:8080
+7. Upload file, select parsing format and parse the file
+8. Search, generate chart and see statistics
