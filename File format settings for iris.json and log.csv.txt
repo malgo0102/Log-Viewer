@@ -8,5 +8,5 @@ Enter column headers:
 log.csv
 Enter setting name: My CSV setting
 Choose file type: CSV
-Enter delimiter: [ ,^-]+
+Enter delimiter: [ ,^]+
 Enter column headers: IP address,Date,Request,URL,HTTP,Status
